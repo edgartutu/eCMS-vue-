@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+
   <v-layout row wrap column>       
-    <v-flex xs2 md6 >
+    <v-flex xs12 md12 >
         <v-data-table class="fb-table-elem"
             :headers="headers"
             :items="items"
@@ -90,7 +90,7 @@
             </v-data-table>
       </v-flex>
       </v-layout>
-      </v-container>
+
 </template>
 <script>
 
