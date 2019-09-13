@@ -1,17 +1,10 @@
 <template>
-	
     <v-app>
-      <navbar />
-	   <v-card class="transparent" width="100%" height="100%">
+	   <v-card class="#dee9ff" style="background-color:#dee9ff;margin-top:0px" width="100%" height="100%">
       <v-content  class="mx-1 mb-1">
-		 
-			  <router-view />
-		 
-        
+			  <router-view />  
       </v-content>
 	 </v-card>
-     
-
     </v-app>
  
 </template>
@@ -29,7 +22,7 @@ import navbar from './components/DashViews/NavBar'
 	// checks to see if auth jwt token is valid or has expired, if it gets back 401 error log out
 	export default {
 		components:{
-    			navbar
+    			
   			},
 
 		

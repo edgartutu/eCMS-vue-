@@ -1,14 +1,16 @@
 <template>
+<div>
+  <navbar/>
   <v-stepper v-model="e1">
-    <v-stepper-header >
-      <v-stepper-step  :complete="e1 > 1" step="1">Complaint Details</v-stepper-step>
+    <v-stepper-header class="purple" >
+      <v-stepper-step class="white--text"  :complete="e1 > 1" step="1">Complaint Details</v-stepper-step>
       <v-divider></v-divider>
       <v-stepper-step :complete="e1 > 2" step="2">Complaint Resolution</v-stepper-step>
       <v-divider></v-divider>
       <v-stepper-step step="3">View</v-stepper-step>
     </v-stepper-header>
     <v-stepper-items>
-      <v-stepper-content step="1">
+      <v-stepper-content  step="1">
         <v-container>
           <v-layout  >
             <v-flex
@@ -62,6 +64,8 @@
           color="primary"
           @click="e1 = 2"
           small
+          tile 
+          outlined
         >
           Continue
         </v-btn>
@@ -113,6 +117,8 @@
           color="primary"
           @click="e1 = 1"
           small
+          tile 
+          outlined
         >
           Back
         </v-btn>
@@ -128,6 +134,8 @@
           color="primary"
           @click="e1 = 3"
           small
+          tile 
+          outlined
         >
           Continue
         </v-btn>
@@ -147,6 +155,8 @@
           color="primary"
           @click="e1 = 2"
           small
+          tile 
+          outlined
         >
           Previous
         </v-btn>
@@ -159,16 +169,19 @@
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
+  </div>
 </template>
 <script>
-import data1 from '@/views/Project.vue'
+import data1 from '@/views/Complaints.vue'
 import decline from '../components/DashViews/Decline.vue'
   import router from '../router'
+  import navbar from '../components/DashViews/NavBar'
   export default {
       name:'Stepperview',
     components:{
       data1,
       decline,
+      navbar
     },
     data () {
       return {

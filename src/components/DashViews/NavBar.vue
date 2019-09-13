@@ -1,24 +1,34 @@
 <template>
     <nav>
-       <v-toolbar app fixed>
+       <v-toolbar style=" background-color: #004080;" app fixed>
            <v-toolbar-title class="purple--text" >eCMS</v-toolbar-title>
            <p></p>
            <p></p>
-            <v-toolbar-items >
-                <v-layout wrap row >
-                <v-btn  flat small  class=" mx-2 black--text" v-for="link in links" :key="link.text" router :to="link.route">
+            <v-toolbar-items class="hidden-sm-and-down" >
+                <v-layout  row >
+                <v-btn  flat small  class=" mx-2 white--text" v-for="link in links" :key="link.text" router :to="link.route">
                     <span>{{link.text}}</span>
                 </v-btn>
                 </v-layout>
             </v-toolbar-items>
             <v-spacer></v-spacer>
                 <p></p>
+                 <v-menu class="hidden-md-and-up">
+                    <v-toolbar-side-icon slot="activator" class="purple--text"   ></v-toolbar-side-icon>
+                    <v-list>
+                    <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
+                        <v-list-tile-content>
+                        <v-list-tile-title class="purple--text">{{ link.text}}</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>   
+                    </v-list>
+                </v-menu>
                 <router-link v-ripple  to="/dashboard">
 					<v-icon class="mx-2" color>mdi-home</v-icon><br>
 				</router-link>
                 <v-menu bottom left content-class offset-y transition="slide-y-transition">
 					<router-link v-ripple slot="activator"  to="/projects">
-						<v-badge color="error" overlap>
+						<v-badge class="#E65100" overlap>
 					        <template slot="badge">{{projects.length}}</template>
 					            <v-icon class="mx-2" color>mdi-bell</v-icon>
 				        </v-badge>
@@ -31,12 +41,10 @@
 						</v-list> -->
 					</v-card>
 				</v-menu>
-                
-                
-                <v-btn flat class="purple--text">
+                     <v-btn flat class="white--text">
                     <span>SignOut</span>
                     <v-icon>exit_to_app</v-icon>
-                </v-btn>
+                    </v-btn> 
         </v-toolbar>
     </nav>
 </template>

@@ -1,5 +1,6 @@
 <template>
 <div class="dashboard">
+  <navbar/>
  
    <v-layout row wrap justify-space-around>
      <v-flex xs10 md5>
@@ -39,13 +40,15 @@ import pie from '../components/DashViews/PieChart.vue'
 import donut from '../components/DashViews/Donut.vue';
 import bar from '../components/DashViews/BarChart.vue'
 import carlender from '../components/DashViews/Carlender.vue'
+import navbar from '../components/DashViews/NavBar'
 
 export default{
     components:{
       pie,
       donut,
       bar,
-      carlender
+      carlender,
+      navbar
     },
   data(){
     return{

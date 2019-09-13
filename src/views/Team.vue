@@ -1,5 +1,6 @@
 <template>
-
+  <div>
+    <navbar/>
   <v-layout row wrap column>       
     <v-flex xs12 md12 >
         <v-data-table class="fb-table-elem"
@@ -32,8 +33,9 @@
                       </template>
                         <v-card>
                             <v-card-title
-                            class="headline grey lighten-2"
+                            class="purple"
                           primary-title
+                          style="color:white;"
                             >
                             Complaint Details
                           </v-card-title>
@@ -90,12 +92,16 @@
             </v-data-table>
       </v-flex>
       </v-layout>
-
+  </div>
 </template>
 <script>
-
+import navbar from '../components/DashViews/NavBar'
   export default {
+    components:{
+      navbar
+    },
     data(){
+    
       return {
       headers: [
         { text: 'Complaint Category', value: 'calories' },

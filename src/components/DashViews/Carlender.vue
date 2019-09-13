@@ -50,7 +50,7 @@ export default{
   border-left: 4px solid #3cd1c2;
 }
 .project.Resolved{
-  border-left: 4px solid orange;
+  border-left: 4px solid #004080;
 }
 .project.Declined{
   border-left: 4px solid tomato;
@@ -59,7 +59,7 @@ export default{
   background: green;
 }
 .v-chip.Resolved{
-  background:  orange;
+  background:  #004080;
 }
 .v-chip.Declined{
   background:  tomato;

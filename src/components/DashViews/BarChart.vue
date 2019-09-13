@@ -41,12 +41,12 @@
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
           datasets: [
             {
-              label: 'Data One',
-              backgroundColor: '#EF9A9A',
+              label: 'Unresolved',
+              backgroundColor: '#AB47BC',
               data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
             }, {
-              label: 'Data One',
-              backgroundColor: '#BA68C8',
+              label: 'Resolved',
+              backgroundColor: '#004080',
               data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
             }
           ]

@@ -1,7 +1,8 @@
 <template>
 <div class="dashboard">
+    <navbar/>
     <v-form>
-      <v-container>
+      <v-container fluid>
         <v-row>
           <v-layout row wrap >
             <v-flex xs10 md3>
@@ -35,7 +36,7 @@
         </v-row>
       </v-container>
     </v-form>
-   <v-container>
+   <v-container fluid>
      <v-layout row class="mb-2">
        <v-tooltip top>
          <v-btn small flat class="primary" @click="sortBy('title')" slot="activator">
@@ -51,7 +52,7 @@
         </v-btn>
         <span class="white--text">sort by status</span>
        </v-tooltip>
-       <v-spacer></v-spacer>
+
      </v-layout>
      <v-card flat class="white"  v-for="project in projects" :key="project.title">
        <v-layout row wrap :class="`pa-3 project ${project.status}`">
@@ -105,7 +106,11 @@
 </template>
 
 <script>
+import navbar from '../components/DashViews/NavBar'
 export default{
+    components:{
+      navbar
+    },
   data(){
     return{
       
@@ -125,6 +130,9 @@ export default{
         phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
         level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
         {title:'Keep a new web',person:'dave',due:'5/Nov/2019',status:'Declined',content:'miss use of property',
+        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
+        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
+        {title:'Keep a new web',person:'dave',due:'5/Nov/2019',status:'Unresolved',content:'miss use of property',
         phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
         level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'}
       ],
@@ -148,6 +156,7 @@ export default{
     getColor (status) {
         if (status =="Resolved" ) return 'orange'
         else if (status=="Declined") return 'red'
+        else if (status=="Unresolved") return 'purple'
         else return 'green darken-2'
       }
         
@@ -158,7 +167,6 @@ export default{
 
   }
  
-
 
 
 
@@ -173,13 +181,19 @@ export default{
 .project.Declined{
   border-left: 4px solid tomato
 }
+.project.Unresolved{
+  border-left: 4px solid purple
+}
 .v-chip.pending{
   background: green 
 }
 .v-chip.Resolved{
-  background:  orange
+  background:  #004080
 }
 .v-chip.Declined{
   background:  tomato
+}
+.v-chip.Unresolved{
+  background:  purple
 }
 </style>

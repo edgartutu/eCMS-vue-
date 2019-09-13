@@ -81,7 +81,7 @@
   </v-stepper>
 </template>
 <script>
-import data1 from '@/views/Project.vue'
+import data1 from '@/views/Complaints.vue'
   export default {
  
     components:{

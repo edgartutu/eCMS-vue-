@@ -26,7 +26,7 @@ export default {
         datasets: [
           {
             label: "Data One",
-            backgroundColor: ["#41B883", "#E46651", "#00D8FF"],
+            backgroundColor: ["#E65100", "#004080", "#0acfbe"],
             data: [1, 10, 5]
           }
         ]

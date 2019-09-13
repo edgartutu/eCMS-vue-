@@ -52,7 +52,7 @@ export default [
       name: 'Complaints',
       requiresAuth: false
     },
-    component: () => import(`@/views/Project.vue`),
+    component: () => import(`@/views/Complaints.vue`),
   },
   {
     path: '/team',
@@ -71,6 +71,28 @@ export default [
       requiresAuth: false
     },
     component: () => import(`@/views/Stepperview.vue`),
+    
+  },
+  {
+    path: '/Login',
+    name: 'login',
+    meta: {
+      
+   
+      requiresAuth: false
+    },
+    component: () => import(`@/views/Login.vue`),
+    
+  },
+  {
+    path: '/register',
+    name: 'register',
+    meta: {
+      
+   
+      requiresAuth: false
+    },
+    component: () => import(`@/views/Register.vue`),
     
   }
 
