@@ -53,7 +53,7 @@
                                   </v-card-text>     
                             <v-divider></v-divider>
                             <v-card-actions>
-                              <v-spacer></v-spacer>
+                              <!-- <v-spacer></v-spacer> -->
                                 <v-dialog
                                 v-model="dialog"
                                 width="200"
