@@ -58,6 +58,7 @@
             </v-flex>
           </v-layout>
         </v-container>
+        <unresolve/>
          <decline/>
         <v-btn
         class="right"
@@ -174,6 +175,7 @@
 <script>
 import data1 from '@/views/Complaints.vue'
 import decline from '../components/DashViews/Decline.vue'
+import unresolve from '../components/DashViews/Unresolved.vue'
   import router from '../router'
   import navbar from '../components/DashViews/NavBar'
   export default {
@@ -181,7 +183,8 @@ import decline from '../components/DashViews/Decline.vue'
     components:{
       data1,
       decline,
-      navbar
+      navbar,
+      unresolve
     },
     data () {
       return {
