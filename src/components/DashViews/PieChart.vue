@@ -7,6 +7,7 @@
 <script>
 import PieChart from "../PieChart.js";
 import VueCharts from 'vue-chartjs'
+import axios from 'axios'
 export default {
   name: "App",
   components: {
@@ -14,6 +15,7 @@ export default {
   },
   data() {
     return {
+      stuff:{},
       chartOptions: {
         hoverBorderWidth: 10,
         
@@ -22,16 +24,27 @@ export default {
         hoverBackgroundColor: "red",
         hoverBorderWidth: 10,
         
-        labels: ["Green", "Red", "Blue"],
+        labels: ["Resolved", "Unresolved", "Pending"],
         datasets: [
           {
             label: "Data One",
             backgroundColor: ["#E65100", "#004080", "#0acfbe"],
-            data: [1, 10, 5]
+            data:this.stuff[0].value
           }
         ]
       }
     };
+  },
+  created(){
+    axios.post('http://127.0.0.1:5000/piechart',{'district_n0':'123432'}).then(response =>{
+      //console.log(response);
+      this.stuff= response.data
+
+
+      
+      console.log(this.stuff)
+
+    })
   }
 };
 </script>
