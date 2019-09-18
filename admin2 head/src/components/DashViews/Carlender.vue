@@ -6,7 +6,7 @@
        <v-layout row wrap :class="`pa-3 project ${project.status}`">
          <v-flex xs12 md6>
            <div class="caption grey--text">Complaint Category</div>
-           <div>{{project.content}}</div>  
+           <div>{{project.nature_complaint}}</div>  
          </v-flex>
          <v-flex xs4  md6>
           <div class="right">
@@ -25,20 +25,23 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default{
+
   data(){
     return{
-      projects:[
-        {status:'pending',content:'miss use of property'},
-        {status:'Resolved',content:'miss use of property'},
-        {status:'pending',content:'miss use of property' },
-        {status:'Declined',content:'miss use of property'}      ]
+      projects:[]
 
       
     }
   },
-
+  created(){
+    axios.post('http://127.0.0.1:5000/getcomplaints',{'district_n0':'123432'}).then(response =>{
+      this.projects = response.data
+    }
+      
+    )
+  }
   
 
 }
@@ -46,7 +49,7 @@ export default{
 </script>
 
 <style lang="stylus" scoped>
-.project.pending{
+.project.Pending{
   border-left: 4px solid #3cd1c2;
 }
 .project.Resolved{
@@ -55,7 +58,7 @@ export default{
 .project.Declined{
   border-left: 4px solid tomato;
 }
-.v-chip.pending{
+.v-chip.Pending{
   background: green;
 }
 .v-chip.Resolved{
