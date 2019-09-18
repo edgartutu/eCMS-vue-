@@ -94,6 +94,17 @@ export default [
     },
     component: () => import(`@/views/Register.vue`),
     
+  },
+  {
+    path: '/time',
+    name: 'schedule',
+    meta: {
+      
+   
+      requiresAuth: false
+    },
+    component: () => import(`@/views/Schedule.vue`),
+    
   }
 
   

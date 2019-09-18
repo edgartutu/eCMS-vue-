@@ -56,6 +56,7 @@ export default {
                 { text:'Dashboard', route:'/dashboard'},
                 { text:'Complaints', route:'/projects'},
                 { text:'Registry',route:'/team'},
+                 { text:'Admistration',route:'/time'},
             ],
             projects:[
         {title:'Ec-2342-2019-041',person:'Walugembe John',due:'9/feb/2019',status:'pending',content:'miss use of property',

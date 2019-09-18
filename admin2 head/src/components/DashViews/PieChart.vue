@@ -1,14 +1,12 @@
 <template>
   <div class="small" >
     <pie-chart :data="chartData" :options="chartOptions" width="100%" height="90px" ></pie-chart>
-    
   </div>
 </template>
 
 <script>
 import PieChart from "../PieChart.js";
 import VueCharts from 'vue-chartjs'
-import axios from 'axios'
 export default {
   name: "App",
   components: {
@@ -16,47 +14,25 @@ export default {
   },
   data() {
     return {
-      stuff:null,
       chartOptions: {
-      hoverBorderWidth:0,
-      borderWidth: "1000px",
-      hoverBackgroundColor: "red",
-      hoverBorderWidth: "5px",
-      cutoutPercentage:0,
+        hoverBorderWidth: 10,
         
       },
       chartData: {
         hoverBackgroundColor: "red",
         hoverBorderWidth: 10,
         
-        labels: ["Resolved", "Unresolved", "Pending"],
+        labels: ["Green", "Red", "Blue"],
         datasets: [
           {
             label: "Data One",
             backgroundColor: ["#E65100", "#004080", "#0acfbe"],
-            data:this.stuff
+            data: [1, 10, 5]
           }
         ]
       }
     };
-  },
-  created(){
-    axios.post('http://127.0.0.1:5000/piechart',{'district_n0':'123432'}).then(response =>{
-     
-      let result= response.data.data
-      this.stuff=result
-      // console.log(this.stuff)
-
-    })
-  },
-  watch:{
-    stuff(newData){
-      const data =this.chartData
-      data.datasets[0].data=newData
-      this.chartData={...data}
-    }
-  },
-
+  }
 };
 </script>
 

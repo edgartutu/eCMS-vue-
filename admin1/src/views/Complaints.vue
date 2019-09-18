@@ -54,23 +54,23 @@
        </v-tooltip>
 
      </v-layout>
-     <v-card flat class="white"  v-for="project in projects" :key="project.title">
+     <v-card flat class="white"  v-for="project in projects" :key="project.complaints_refn0">
        <v-layout row wrap :class="`pa-3 project ${project.status}`">
          <v-flex xs12 md4>
            <div class="caption grey--text">Complaint Category</div>
-           <div>{{project.content}}</div>  
+           <div>{{project.nature_complaint}}</div>  
          </v-flex>
          <v-flex xs6 sm4 md2>
            <div class="caption grey--text">Ref Number</div>
-           <div>{{project.title}}</div>
+           <div>{{project.complaints_refn0}}</div>
          </v-flex>
          <v-flex xs6 sm4 md2>
            <div class="caption grey--text">Agent Name</div>
-           <div>{{project.person}}</div>
+           <div>{{project.agent_name}}</div>
          </v-flex>
          <v-flex xs6 sm4 md2>
            <div class="caption grey--text">Date</div>
-           <div>{{project.due}}</div>
+           <div>{{project.date}}</div>
          </v-flex>
          
          <v-flex xs2 sm4 md1>
@@ -82,9 +82,9 @@
          </v-flex>
          <v-flex xs2 sm4 md1>
            <router-link   :to="{ name: 'Stepperview',
-            params: { userData:{complaint:project.content,refnumber:project.title,agentname:project.person,
-            date:project.due,phoneno:project.phone,location:project.Location,
-            complaint_detail:project.complaint,levels:project.level,post:project.post,picto:project.picture} } }" >
+            params: { userData:{complaint:project.content,refnumber:project.complaints_refn0,agentname:project.agent_name,
+            date:project.date,phoneno:project.agent_phone,location:project.district,
+            complaint_detail:project.nature_complaint,levels:project.level,post:project.post,picto:project.picture} } }" >
 				    <v-btn
                 :color="getColor(project.status)"
                 dark
@@ -107,6 +107,7 @@
 
 <script>
 import navbar from '../components/DashViews/NavBar'
+import axios from 'axios'
 export default{
     components:{
       navbar
@@ -119,23 +120,7 @@ export default{
       
     // },
     
-      projects:[
-        {title:'Ec-2342-2019-041',person:'Walugembe John',due:'9/feb/2019',status:'pending',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
-        {title:'Clone a new web',person:'jack',due:'6/march/2019',status:'Resolved',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
-        {title:'Art a new web',person:'shot',due:'4/april/2019',status:'pending',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
-        {title:'Keep a new web',person:'dave',due:'5/Nov/2019',status:'Declined',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
-        {title:'Keep a new web',person:'dave',due:'5/Nov/2019',status:'Unresolved',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'}
-      ],
+      projects:[],
       dialog: false,
       
      
@@ -146,6 +131,10 @@ export default{
     pages () {
       return this.pagination.rowsPerPage ? Math.ceil(this.items.length / this.pagination.rowsPerPage) : 0
     }
+  },
+  created(){
+    axios.post('http://127.0.0.1:5000/getcomplaints',{'district_n0':'123432'}).then(
+      response => {this.projects = response.data})
   },
 
   methods: {
@@ -172,7 +161,7 @@ export default{
 
 </script>
 <style lang="stylus" scoped>
-.project.pending{
+.project.Pending{
   border-left: 4px solid green
 }
 .project.Resolved{
@@ -184,7 +173,7 @@ export default{
 .project.Unresolved{
   border-left: 4px solid purple
 }
-.v-chip.pending{
+.v-chip.Pending{
   background: green 
 }
 .v-chip.Resolved{

@@ -3,20 +3,34 @@
     <navbar/>
   <v-layout row wrap column>       
     <v-flex xs12 md12 >
+      <v-text-field
+            v-model="search"
+            append-icon="search"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
         <v-data-table class="fb-table-elem"
             :headers="headers"
             :items="items"
+            :search="search"
             hide-actions
             item-key="name"
             expand >
             <template slot="items" slot-scope="props" >          
               <tr @click="props.expanded = !props.expanded">  
-                <td class="datatable-cell-wrapper"><div>{{ props.item.classify_complaint }}</div></td>
-                <td class="datatable-cell-wrapper"><div>{{ props.item.complaints_refn0}}</div></td>
-                <td class="datatable-cell-wrapper">{{ props.item.nature_complaint }}</td>
-                <td class="datatable-cell-wrapper">{{ props.item.district }}</td>
-                <td class="datatable-cell-wrapper">{{ props.item.date }}</td>
-                <td class="datatable-cell-wrapper">{{ props.item.date_submit }}</td>
+                <td class="datatable-cell-wrapper"><div>{{ props.item.name }}</div></td>
+                <td class="datatable-cell-wrapper"><div>{{ props.item.calories}}</div></td>
+                <td class="datatable-cell-wrapper">{{ props.item.carbs }}</td>
+                <td class="datatable-cell-wrapper">{{ props.item.protein }}</td>
+                <td class="datatable-cell-wrapper">{{ props.item.iron }}</td>
+                <td>
+          <div class="right">
+            <v-chip  small :class="`${props.item.status}  white--text caption my-2`">
+              {{props.item.status}}
+            </v-chip>
+          </div>
+         </td>
                 
                 <v-dialog
                 v-model="dialog"
@@ -41,17 +55,20 @@
                           </v-card-title>
                                   <v-card-text class="px-16">
                                       <h4 class="font-weight-bold">Complaint Ref</h4>
-                                      <p>{{props.item.complaints_refn0}}</p>
+                                      <p>{{props.item.name}}</p>
                                       <h4 class="font-weight-bold">Complaint Category</h4>
-                                      <p>{{props.item.nature_complaint}}</p>
+                                      <p>{{props.item.calories}}</p>
                                       <h4 class="font-weight-bold">Complainant</h4>
-                                      <p>{{props.item.complaint}}</p>
+                                      <p>{{props.item.fat}}</p>
                                       <h4 class="font-weight-bold">Location</h4>
-                                      <p>{{props.item.district}}</p>
+                                      <p>{{props.item.carbs}}</p>
                                       <h4 class="font-weight-bold">Date Recieved</h4>
-                                      <p>{{props.item.date}}</p>
+                                      <p>{{props.item.protein}}</p>
                                         <h4 class="font-weight-bold">Date Resolved</h4>
-                                      <p>{{props.item.date_submit}}</p> 
+                                      <p>{{props.item.iron}}</p> 
+                                         <h4 class="font-weight-bold">Resolution Details</h4>
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt magnam necessitatibus adipisci, quam a quidem, alias eum amet quos aperiam provident sequi in vero voluptas ea pariatur assumenda, eos dolorum!</p> 
+                                      
                                   </v-card-text>     
                             <v-divider></v-divider>
                             <v-card-actions>
@@ -96,7 +113,6 @@
 </template>
 <script>
 import navbar from '../components/DashViews/NavBar'
-import axios from 'axios'
   export default {
     components:{
       navbar
@@ -104,27 +120,140 @@ import axios from 'axios'
     data(){
     
       return {
+        search: '',
       headers: [
         { text: 'Complaint Category', value: 'calories' },
         { text: 'Complaint Ref', value: 'calories' },
-          { text: 'Complainant', value: 'fat' },
+
           { text: 'Location', value: 'carbs' },
           { text: 'Date Recieved', value: 'protein' },
           { text: 'Date Resolved ', value: 'iron' },
+           { text: 'Status ', value: 'status' },
       
       ],
-      items: []
+      items: [
+                {
+            name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'Mugerwa steven',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'pending'
+          },
+          {
+            name: 'Lost of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'walugembe steven',
+            carbs: 'Kampala',
+            protein: '5/08/2019',
+            iron: '7/10/2019',
+            status:'Resolved'
+          },
+          {
+            name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'Namugerwa jane',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'pending'
+          },
+          {
+            name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'Mugerwa steven',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'Declined'
+          },
+          {
+           name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'Kabali steven',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'Declined'
+          },
+          {
+            name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'mutawe peter',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'pending'
+          },
+          {
+            name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'Sejuuko paul',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'Resolved'
+          },
+          {
+            name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'Aki steven',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'pending'
+          },
+          {
+            name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'Arinaitwe John',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'Resolved'
+          },
+          {
+            name: 'Theft of material',
+            calories: 'EC-2343-2019-334',
+            fat: 'Opio steven',
+            carbs: 'Mbale',
+            protein: '2/08/2019',
+            iron: '4/10/2019',
+            status:'Declined'
+          },
+       
+      ]
       
     }
     
-    
     }, 
-    created(){
-      axios.get('http://127.0.0.1:5000/allcomplaints').then(
-        response =>{
-          this.items = response.data
-        }
-      )
-    }
   }
 </script>
+<style lang="stylus" scoped>
+.item.props.pending{
+  border-left: 4px solid green
+}
+.project.Resolved{
+  border-left: 4px solid orange
+}
+.project.Declined{
+  border-left: 4px solid tomato
+}
+.project.Unresolved{
+  border-left: 4px solid purple
+}
+.v-chip.pending{
+  background: green 
+}
+.v-chip.Resolved{
+  background:  #004080
+}
+.v-chip.Declined{
+  background:  tomato
+}
+.v-chip.Unresolved{
+  background:  purple
+}
+</style>
+
