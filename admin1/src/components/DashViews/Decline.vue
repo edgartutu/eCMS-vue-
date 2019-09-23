@@ -20,13 +20,9 @@
            <v-container>
               <v-layout row wrap>
                   <v-flex xs12 md12>
-                        <v-textarea :rules="nameRules" label="Decline Resolution" required ></v-textarea>
+                        <v-textarea :rules="nameRules" label="Decline Resolution" required></v-textarea>
                   </v-flex>
-                  <!-- <v-flex xs6 md6>
-                         <v-col cols="12" sm="6">
-                            <v-text-field label="Signatue" single-line outlined :rules="nameRules" required ></v-text-field>
-                        </v-col>
-                  </v-flex> -->
+
               </v-layout >
                </v-container>
         </v-card-text>
@@ -36,7 +32,7 @@
           <v-btn
             color="primary"
             text
-            @click="dialog = false"
+            @click="dialog = false; declined()"
           >
             Submit
           </v-btn>
@@ -46,11 +42,31 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
+  //import router from './router'
   export default {
     data () {
       return {
         dialog: false,
+        userData: 0,
+        comment:"",
+        admin_email:"",
+        nameRules: [
+        v => !!v || 'Input is required',
+        // v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+      ],
       }
     },
+    created() {
+          this.userData = this.$route.params.userData;
+        },
+    methods:{
+      declined(){
+        //console.log(this.userData.refnumber)
+        axios.post('http://127.0.0.1:5000/postcomplaints',{
+          'status':'Declined','comment':this.comment,'complaints_refn0':this.userData.refnumber, 'admin_email':1234
+          })
+      }
+    }
   }
 </script>

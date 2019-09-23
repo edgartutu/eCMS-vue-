@@ -84,7 +84,7 @@
            <router-link   :to="{ name: 'Stepperview',
             params: { userData:{complaint:project.content,refnumber:project.complaints_refn0,agentname:project.agent_name,
             date:project.date,phoneno:project.agent_phone,location:project.district,
-            complaint_detail:project.nature_complaint,levels:project.level,post:project.post,picto:project.picture} } }" >
+            complaint_detail:project.complaint,levels:project.classify_complaint,post:project.agent_staff,picto:project.picture} } }" >
 				    <v-btn
                 :color="getColor(project.status)"
                 dark

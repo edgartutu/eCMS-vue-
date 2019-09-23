@@ -87,23 +87,23 @@
           <v-container>
               <v-layout row wrap>
                   <v-flex xs12 md6>
-                        <v-text-field :rules="nameRules"  label="Resolver Post" required></v-text-field>
+                        <v-text-field :rules="nameRules"  label="Resolver Post" required v-model="post"></v-text-field>
                   </v-flex>
                   <v-flex xs12 md6>
-                        <v-text-field :rules="nameRules"  label="NiN Number" required></v-text-field>
+                        <v-text-field :rules="nameRules"  label="NiN Number" required v-model="nin"></v-text-field>
                   </v-flex>
                   <v-flex xs12 md12>
-                        <v-text-field :rules="nameRules"  label="Complaint Clasification" required></v-text-field>
+                        <v-text-field :rules="nameRules"  label="Complaint Clasification" required v-model="classification"></v-text-field>
                   </v-flex>
                   <v-flex xs12 md12>
-                        <v-textarea :rules="nameRules" label="Complaint Resolution" required ></v-textarea>
+                        <v-textarea :rules="nameRules" label="Complaint Resolution" required v-model="resolution"></v-textarea>
                   </v-flex>
                   <v-flex xs12 md12>
-                        <v-textarea :rules="nameRules" label="Resolution Details" required ></v-textarea>
+                        <v-textarea :rules="nameRules" label="Resolution Details" required v-model="resolution"></v-textarea>
                   </v-flex>
                   <v-flex xs6 md6>
                          <v-col cols="12" sm="6">
-                            <v-text-field label="Signatue" single-line outlined :rules="nameRules" required ></v-text-field>
+                            <v-text-field label="Signatue" single-line outlined :rules="nameRules" required v-model="signature"></v-text-field>
                         </v-col>
                   </v-flex>
                  
@@ -126,14 +126,14 @@
         <v-btn
          
           color="green darken-4"
-          @click="e1 = 3"
+          @click="e1 = 3; submit()"
         >
           Submit
         </v-btn>
         
         <v-btn class="right"
           color="primary"
-          @click="e1 = 3"
+          @click="e1 = 3; submit()"
           small
           tile 
           outlined
@@ -189,6 +189,12 @@ import unresolve from '../components/DashViews/Unresolved.vue'
     data () {
       return {
         e1: 0,
+        post:"",
+        nin:"",
+        classification:"",
+        resolution:"",
+        details:"",
+        signature:"",
         userData: 0,
         debug: false,
         nameRules: [
@@ -201,6 +207,17 @@ import unresolve from '../components/DashViews/Unresolved.vue'
     created() {
             this.userData = this.$route.params.userData;
         },
+
+    methods:{
+      submit(){
+        axios.post('http://127.0.0.1:5000/postcomplaints',{
+          'status':'Resolved','complaints_refn0':this.userData.refnumber, 'admin_email':1234,
+          'districtagent_idn0':this.nin,'districtagent_post':this.post,
+          'district_resolutions':this.resolution,'classify_complaint':this.classification,
+          'district_description':this.details
+          })
+      }
+    }
     
   }
 </script>
