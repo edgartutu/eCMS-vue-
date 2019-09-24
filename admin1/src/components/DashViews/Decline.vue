@@ -20,7 +20,7 @@
            <v-container>
               <v-layout row wrap>
                   <v-flex xs12 md12>
-                        <v-textarea :rules="nameRules" label="Decline Resolution" required></v-textarea>
+                        <v-textarea :rules="nameRules" label="Decline Resolution" v-model="comments" required></v-textarea>
                   </v-flex>
 
               </v-layout >
@@ -29,13 +29,16 @@
         <v-divider></v-divider>
         <v-card-actions>
           <div class="flex-grow-1"></div>
-          <v-btn
+          <router-link to="/projects">
+            <v-btn
             color="primary"
             text
             @click="dialog = false; declined()"
-          >
+            >
             Submit
           </v-btn>
+          </router-link>
+          
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -49,7 +52,7 @@ import axios from 'axios'
       return {
         dialog: false,
         userData: 0,
-        comment:"",
+        comments:"",
         admin_email:"",
         nameRules: [
         v => !!v || 'Input is required',
@@ -64,8 +67,10 @@ import axios from 'axios'
       declined(){
         //console.log(this.userData.refnumber)
         axios.post('http://127.0.0.1:5000/postcomplaints',{
-          'status':'Declined','comment':this.comment,'complaints_refn0':this.userData.refnumber, 'admin_email':1234
-          })
+          'status':'Declined','comment':this.comments,'complaints_refn0':this.userData.refnumber, 'admin_email':1234
+          }) .then(response=>{
+                window.location.reload()
+            })
       }
     }
   }

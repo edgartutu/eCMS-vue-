@@ -94,6 +94,17 @@ export default [
     },
     component: () => import(`@/views/Register.vue`),
     
+  },
+  {
+    path: '/store',
+    name: 'store',
+    meta: {
+      
+   
+      requiresAuth: false
+    },
+    component: () => import(`@/views/Stores.vue`),
+    
   }
 
   

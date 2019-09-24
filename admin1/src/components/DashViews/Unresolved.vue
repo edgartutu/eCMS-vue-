@@ -20,7 +20,7 @@
            <v-container>
               <v-layout row wrap>
                   <v-flex xs12 md12>
-                        <v-textarea :rules="nameRules" label="Description" required ></v-textarea>
+                        <v-textarea :rules="nameRules" label="Description" v-model="comment" required ></v-textarea>
                   </v-flex>
               </v-layout >
                </v-container>
@@ -28,13 +28,16 @@
         <v-divider></v-divider>
         <v-card-actions>
           <div class="flex-grow-1"></div>
-          <v-btn
+          <router-link to="/projects">
+            <v-btn
             color="primary"
             text
             @click="dialog = false; declined()"
-          >
+            >
             push upper
           </v-btn>
+          </router-link>
+          
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -47,6 +50,7 @@ import axios from 'axios'
       return {
         dialog: false,
         userData: 0,
+        comment:'',
         nameRules: [
         v => !!v || 'Input is required',
         // v => (v && v.length <= 10) || 'Name must be less than 10 characters',
@@ -61,7 +65,9 @@ import axios from 'axios'
         //console.log(this.userData.refnumber)
         axios.post('http://127.0.0.1:5000/postcomplaints',{
           'status':'Unresolved','comment':this.comment,'complaints_refn0':this.userData.refnumber, 'admin_email':1234
-          })
+          }) .then(response=>{
+                window.location.reload()
+            })
       }
   }
   }

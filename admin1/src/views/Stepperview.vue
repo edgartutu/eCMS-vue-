@@ -99,7 +99,7 @@
                         <v-textarea :rules="nameRules" label="Complaint Resolution" required v-model="resolution"></v-textarea>
                   </v-flex>
                   <v-flex xs12 md12>
-                        <v-textarea :rules="nameRules" label="Resolution Details" required v-model="resolution"></v-textarea>
+                        <v-textarea :rules="nameRules" label="Resolution Details" required v-model="details"></v-textarea>
                   </v-flex>
                   <v-flex xs6 md6>
                          <v-col cols="12" sm="6">
@@ -126,14 +126,14 @@
         <v-btn
          
           color="green darken-4"
-          @click="e1 = 3; submit()"
+          @click="e1 = 3;submit()"
         >
           Submit
         </v-btn>
         
         <v-btn class="right"
           color="primary"
-          @click="e1 = 3; submit()"
+          @click="e1 = 3;submit()"
           small
           tile 
           outlined
@@ -173,6 +173,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 import data1 from '@/views/Complaints.vue'
 import decline from '../components/DashViews/Decline.vue'
 import unresolve from '../components/DashViews/Unresolved.vue'
@@ -216,6 +217,7 @@ import unresolve from '../components/DashViews/Unresolved.vue'
           'district_resolutions':this.resolution,'classify_complaint':this.classification,
           'district_description':this.details
           })
+          // console.log(this.userData.refnumber)
       }
     }
     

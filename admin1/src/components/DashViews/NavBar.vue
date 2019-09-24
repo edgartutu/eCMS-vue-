@@ -49,6 +49,7 @@
     </nav>
 </template>
 <script>
+import axios from 'axios'
 export default {
     data(){
         return{
@@ -56,23 +57,18 @@ export default {
                 { text:'Dashboard', route:'/dashboard'},
                 { text:'Complaints', route:'/projects'},
                 { text:'Registry',route:'/team'},
+                 { text:'Stores',route:'/store'},
             ],
             projects:[
-        {title:'Ec-2342-2019-041',person:'Walugembe John',due:'9/feb/2019',status:'pending',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
-        {title:'Clone a new web',person:'jack',due:'6/march/2019',status:'Resolved',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
-        {title:'Art a new web',person:'shot',due:'4/april/2019',status:'pending',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'},
-        {title:'Keep a new web',person:'dave',due:'5/Nov/2019',status:'Declined',content:'miss use of property',
-        phone:'0700418430',complaint:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi officiis, tempora suscipit amet ullam eligendi repellendus quaerat quasi quam aperiam, ut architecto veritatis. Provident, aliquid similique placeat ullam sit quod?',
-        level:"Staff",Location:'Hoima',post:'supervisor',picture:'zzzzzzz'}
+      
       ],
         }
-    }
+    },
+      created(){
+    axios.post('http://127.0.0.1:5000/getcomplaints',{'district_n0':'123432'}).then(
+      response => {this.projects = response.data})
+    //   console.log(this.response)
+  },
 }
 </script>
 

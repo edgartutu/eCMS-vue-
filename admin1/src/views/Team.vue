@@ -3,17 +3,29 @@
     <navbar/>
   <v-layout row wrap column>       
     <v-flex xs12 md12 >
+       <export-excel :data="items">
+            <h6  >Export to Excel</h6>
+            <img src="@/assets/img/512.png" style="width:40px;height:40px">
+        </export-excel>  
+      <v-text-field
+            v-model="search"
+            append-icon="search"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
         <v-data-table class="fb-table-elem"
             :headers="headers"
             :items="items"
+             :search="search"
             hide-actions
             item-key="name"
             expand >
             <template slot="items" slot-scope="props" >          
               <tr @click="props.expanded = !props.expanded">  
-                <td class="datatable-cell-wrapper"><div>{{ props.item.classify_complaint }}</div></td>
+                <td class="datatable-cell-wrapper"><div>{{ props.item.nature_complaint }}</div></td>
                 <td class="datatable-cell-wrapper"><div>{{ props.item.complaints_refn0}}</div></td>
-                <td class="datatable-cell-wrapper">{{ props.item.nature_complaint }}</td>
+                <td class="datatable-cell-wrapper">{{ props.item.complaint }}</td>
                 <td class="datatable-cell-wrapper">{{ props.item.district }}</td>
                 <td class="datatable-cell-wrapper">{{ props.item.date }}</td>
                 <td class="datatable-cell-wrapper">{{ props.item.date_submit }}</td>
@@ -52,6 +64,8 @@
                                       <p>{{props.item.date}}</p>
                                         <h4 class="font-weight-bold">Date Resolved</h4>
                                       <p>{{props.item.date_submit}}</p> 
+                                       <h4 class="font-weight-bold">Level One Resolution</h4>
+                                      <p>{{props.item.district_resolutions}}</p> 
                                   </v-card-text>     
                             <v-divider></v-divider>
                             <v-card-actions>
@@ -104,6 +118,7 @@ import axios from 'axios'
     data(){
     
       return {
+        search: '',
       headers: [
         { text: 'Complaint Category', value: 'calories' },
         { text: 'Complaint Ref', value: 'calories' },
