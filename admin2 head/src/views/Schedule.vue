@@ -1,29 +1,50 @@
 <template>
     <div>
         <navbar/>
-        <v-layout row wrap justify-space-around>
+       <v-layout row wrap justify-space-around>
      <v-flex xs10 md5>
        <v-card class="pa-3" outline  max-width="800" height="400px">
-      
+         
+          <v-date-picker flat light green color="purple"   v-model="picker"></v-date-picker>
+         
        </v-card>
      </v-flex>
      <v-flex xs10 md5>
        <v-card class="pa-2" outline max-width="800"  height="400px"> 
          <div width="1000px"></div>
-         
+          <admin/>
        </v-card>
      </v-flex>
    </v-layout><br>
-        
+   <v-layout row wrap justify-space-around >
+     
+     <v-flex xs10 md12 >
+       <v-card max-height="400px" style="overflow-y: auto" class="pa-3" outline max-width="1300"  height="400px">
+         <decline/>
+       </v-card>
+     </v-flex>
+   </v-layout>
+  
     </div>
 </template>
 <script>
 import navbar from '../components/DashViews/NavBar'
 import oclock from '../components/DashViews/Oclock'
+import decline from '../components/DashViews/Stores.vue'
+import admin from '../components/DashViews/Admins.vue'
+
 export default {
     components:{
         navbar,
-        oclock
-    }
+        oclock,
+        decline,
+        admin
+    },
+     data () {
+      return {
+        picker: new Date().toISOString().substr(0, 10),
+      }
+    },
 }
+
 </script>

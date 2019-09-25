@@ -120,12 +120,12 @@ import axios from 'axios'
       return {
         search: '',
       headers: [
-        { text: 'Complaint Category', value: 'calories' },
-        { text: 'Complaint Ref', value: 'calories' },
-          { text: 'Complainant', value: 'fat' },
-          { text: 'Location', value: 'carbs' },
-          { text: 'Date Recieved', value: 'protein' },
-          { text: 'Date Resolved ', value: 'iron' },
+        { text: 'Complaint Category', value: 'nature_complaint' },
+        { text: 'Complaint Ref', value: 'complaints_refn0' },
+          { text: 'Complainant', value: 'complaint' },
+          { text: 'Location', value: 'district' },
+          { text: 'Date Recieved', value: 'date' },
+          { text: 'Date Resolved ', value: 'date_submit' },
       
       ],
       items: []

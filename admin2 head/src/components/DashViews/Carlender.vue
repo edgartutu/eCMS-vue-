@@ -2,11 +2,11 @@
 <div >
  
    <v-container max-height="400px" style="overflow-y: auto">
-     <v-card  flat class="white"  v-for="project in projects" :key="project.content">
+     <v-card  flat class="white"  v-for="project in projects" :key="project.nature_complaint">
        <v-layout row wrap :class="`pa-3 project ${project.status}`">
          <v-flex xs12 md6>
            <div class="caption grey--text">Complaint Category</div>
-           <div>{{project.content}}</div>  
+           <div>{{project.nature_complaint}}</div>  
          </v-flex>
          <v-flex xs4  md6>
           <div class="right">
@@ -25,19 +25,22 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default{
   data(){
     return{
-      projects:[
-        {status:'pending',content:'miss use of property'},
-        {status:'Resolved',content:'miss use of property'},
-        {status:'pending',content:'miss use of property' },
-        {status:'Declined',content:'miss use of property'}      ]
+      projects:[]
 
       
     }
   },
+  created(){
+    axios.get('http://127.0.0.1:5000/admingetcomplaints').then(response =>{
+      this.projects = response.data
+    }
+      
+    )
+  }
 
   
 
@@ -46,26 +49,28 @@ export default{
 </script>
 
 <style lang="stylus" scoped>
-.project.pending{
-  border-left: 4px solid #3cd1c2;
+.project.Pending{
+  border-left: 4px solid green
 }
 .project.Resolved{
-  border-left: 4px solid #004080;
+  border-left: 4px solid orange
 }
 .project.Declined{
-  border-left: 4px solid tomato;
+  border-left: 4px solid tomato
 }
-.v-chip.pending{
-  background: green;
+.project.Unresolved{
+  border-left: 4px solid purple
+}
+.v-chip.Pending{
+  background: green 
 }
 .v-chip.Resolved{
-  background:  #004080;
+  background:  #004080
 }
 .v-chip.Declined{
-  background:  tomato;
+  background:  tomato
 }
-.v-chip{
-    background:hotpink;
+.v-chip.Unresolved{
+  background:  purple
 }
-
 </style>

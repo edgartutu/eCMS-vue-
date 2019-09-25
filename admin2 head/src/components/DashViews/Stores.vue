@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar/>
+    <!-- <navbar/> -->
   <v-layout row wrap column>  
     <v-flex xs12 md12 >
         <export-excel :data="items">
@@ -39,11 +39,11 @@
   </div>
 </template>
 <script>
-import navbar from '../components/DashViews/NavBar'
+// import navbar from '../components/DashViews/NavBar'
 import axios from 'axios'
   export default {
     components:{
-      navbar
+     
     },
     data(){
     
@@ -53,7 +53,7 @@ import axios from 'axios'
           status:'',
           
       headers: [
-         { text: 'Complaint Category', value: 'nature_complaint' },
+        { text: 'Complaint Category', value: 'nature_complaint' },
         { text: 'Complaint Ref', value: 'complaints_refn0' },
           { text: 'Complainant', value: 'complaint' },
           { text: 'Comments', value: 'comment' },
