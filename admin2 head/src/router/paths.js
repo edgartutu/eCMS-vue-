@@ -105,6 +105,17 @@ export default [
     },
     component: () => import(`@/views/Schedule.vue`),
     
+  },
+  {
+    path: '/reports',
+    name: 'reports',
+    meta: {
+      
+   
+      requiresAuth: false
+    },
+    component: () => import(`@/views/Comps.vue`),
+    
   }
 
   

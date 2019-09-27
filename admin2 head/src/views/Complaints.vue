@@ -12,10 +12,12 @@
                   counter="25"
                   label="Level 1 Code"
                   outlined
+                  v-model="district_name"
+                 
                 ></v-text-field>
             </v-col>
             </v-flex>
-              <v-btn class="mx-2" fab dark large color="cyan">
+              <v-btn  class="mx-2" fab dark large color="cyan">
                   Search
                </v-btn>
                <v-spacer></v-spacer>
@@ -122,6 +124,7 @@ export default{
     
       projects:[],
       dialog: false,
+      district_name:''
       
      
     }
@@ -147,6 +150,10 @@ export default{
         else if (status=="Declined") return 'red'
         else if (status=="Unresolved") return 'purple'
         else return 'green darken-2'
+      },
+      filter(){
+          axios.post('http://127.0.0.1:5000/AllDistrictheadComplaints',{'district_name':this.district_name}).then(
+              response => {this.projects = response.data})
       }
         
       },

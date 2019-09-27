@@ -3,10 +3,15 @@
     <navbar/>
   <v-layout row wrap column>       
     <v-flex xs12 md12 >
-      <export-excel :data="items">
+      <export-excel style="float:left;" :data="items">
             <h6  >Export to Excel</h6>
             <img src="@/assets/img/512.png" style="width:40px;height:40px">
         </export-excel>  
+        <v-flex>
+          <router-link to="/reports">
+              <v-btn style="float:right;" ripple outlined color="indigo">Register Complaint</v-btn>
+          </router-link>
+        </v-flex>
       <v-text-field
             v-model="search"
             append-icon="search"

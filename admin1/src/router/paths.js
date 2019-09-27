@@ -105,6 +105,17 @@ export default [
     },
     component: () => import(`@/views/Stores.vue`),
     
+  },
+  {
+    path: '/report',
+    name: 'report',
+    meta: {
+      
+   
+      requiresAuth: false
+    },
+    component: () => import(`@/views/Complain.vue`),
+    
   }
 
   
