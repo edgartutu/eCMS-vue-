@@ -41,6 +41,7 @@
                   <v-text-field
                     label="Name"
                     name="login"
+                    v-model="name"
                     prepend-icon="person"
                     type="text"
                   ></v-text-field>
@@ -48,25 +49,29 @@
                   <v-text-field
                     label="Email"
                     name="login"
+                    v-model="email"
                     prepend-icon="email"
                     type="text"
                   ></v-text-field>
                   <v-text-field
                     label="Tel"
                     name="login"
+                    v-model="tel"
                     prepend-icon="email"
                     type="text"
                   ></v-text-field>
                   <v-text-field
                     id="password"
                     label="Password"
+                    v-model="password"
                     name="password"
                     prepend-icon="lock"
                     type="password"
                   ></v-text-field>
                   <v-text-field
-                    id="password"
+                    id="confirm"
                     label="Confirm Password"
+                    v-model="confirm"
                     name="password"
                     prepend-icon="lock"
                     type="password"
@@ -75,19 +80,33 @@
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
-                <v-btn color="primary">Register</v-btn>
+                <v-btn color="primary" @click="submit()">Register</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
 </template>
 <script>
+import axios from 'axios'
   export default {
     props: {
       source: String,
     },
     data: () => ({
       drawer: null,
+      name:"",
+      email:"",
+      tel:"",
+      password:"",
+      confirm:"",
     }),
+    methods:{
+      submit(){
+        axios.post('http://127.0.0.1:5000/head_register',{
+          'Name':this.name,'email':this.email,'tel':this.tel,'password':this.password,'confirm_password':this.confirm
+          })
+          }
+
+      }
   }
 </script>

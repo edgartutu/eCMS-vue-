@@ -23,6 +23,8 @@ export default {
       hoverBackgroundColor: "red",
       hoverBorderWidth: "5px",
       cutoutPercentage:0,
+      district: localStorage.getItem('district'),
+      token: localStorage.getItem('token'),
         
       },
       chartData: {
@@ -41,7 +43,13 @@ export default {
     };
   },
   created(){
-    axios.post('http://127.0.0.1:5000/piechart',{'district_n0':'123432'}).then(response =>{
+    axios.post('http://127.0.0.1:5000/piechart',{'district_n0':this.district},
+    {
+       headers:{
+       'x-access-token':this.token
+     }
+     }
+    ).then(response =>{
      
       let result= response.data.data
       this.stuff=result

@@ -62,10 +62,11 @@ export default {
             projects:[
       
       ],
+      token: localStorage.getItem('token')
         }
     },
     created(){
-      axios.get('http://127.0.0.1:5000/alladmincomplaints').then(
+      axios.get('http://127.0.0.1:5000/alladmincomplaints',{headers:{'x-access-token':this.token}}).then(
         response =>{
           this.projects = response.data
           console.log(this.response)

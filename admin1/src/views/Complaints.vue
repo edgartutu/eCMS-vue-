@@ -122,6 +122,9 @@ export default{
     
       projects:[],
       dialog: false,
+      token: localStorage.getItem('token'),
+      district_no: localStorage.getItem('district'),
+      
       
      
     }
@@ -133,7 +136,9 @@ export default{
     }
   },
   created(){
-    axios.post('http://127.0.0.1:5000/getcomplaints',{'district_n0':'123432'}).then(
+    axios.post('http://127.0.0.1:5000/getcomplaints',{'district_n0': this.district_no},
+    {headers:{'x-access-token':this.token}}
+    ).then(
       response => {this.projects = response.data})
   },
 

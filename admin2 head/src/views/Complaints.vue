@@ -124,7 +124,10 @@ export default{
     
       projects:[],
       dialog: false,
-      district_name:''
+      district_name:'',
+      token: localStorage.getItem('token'),
+      user: localStorage.getItem('user'),
+
       
      
     }
@@ -136,7 +139,7 @@ export default{
     }
   },
   created(){
-    axios.get('http://127.0.0.1:5000/admingetcomplaints').then(
+    axios.get('http://127.0.0.1:5000/admingetcomplaints',{headers:{'x-access-token':this.token}}).then(
       response => {this.projects = response.data})
   },
 
@@ -152,7 +155,7 @@ export default{
         else return 'green darken-2'
       },
       filter(){
-          axios.post('http://127.0.0.1:5000/AllDistrictheadComplaints',{'district_name':this.district_name}).then(
+          axios.post('http://127.0.0.1:5000/AllDistrictheadComplaints',{'district_name':this.district_name},{headers:{'x-access-token':this.token}}).then(
               response => {this.projects = response.data})
       }
         

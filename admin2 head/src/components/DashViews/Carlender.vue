@@ -29,13 +29,14 @@ import axios from 'axios'
 export default{
   data(){
     return{
-      projects:[]
+      projects:[],
+      token: localStorage.getItem('token')
 
       
     }
   },
   created(){
-    axios.get('http://127.0.0.1:5000/admingetcomplaints').then(response =>{
+    axios.get('http://127.0.0.1:5000/admingetcomplaints',{headers:{'x-access-token':this.token}}).then(response =>{
       this.projects = response.data
     }
       

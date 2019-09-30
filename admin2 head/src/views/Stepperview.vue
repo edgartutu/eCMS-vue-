@@ -203,6 +203,8 @@ import decline from '../components/DashViews/Decline.vue'
         v => !!v || 'Input is required',
         // v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
+      user: localStorage.getItem('user'),
+      token: localStorage.getItem('token')
       
       }
     },
@@ -212,12 +214,12 @@ import decline from '../components/DashViews/Decline.vue'
     methods:{
       submit(){
         axios.post('http://127.0.0.1:5000/adminpostcomplaints',{
-          'status':'Resolved','complaints_refn0':this.userData.refnumber, 'admin_email':1234,
+          'status':'Resolved','complaints_refn0':this.userData.refnumber, 'admin_email':this.user,
           'nin':this.nin,'districtagent_post':this.post,
           'district_resolutions':this.resolution,'classify_complaint':this.classification,
           'district_description':this.details,
           'head_signature':this.signature
-          })
+          },{headers:{'x-access-token':this.token}})
       }
     }
   }

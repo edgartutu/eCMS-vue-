@@ -5,43 +5,52 @@
  */
 import store from '../store'
 export default [
-  
+  {
+    path: '*',
+    meta: {
+      name: '',
+      requiresAuth: false
+    },
+    redirect: {
+      path: '/dashboard'
+    }
+  },
   // This  allows you to have pages apart of the app but no rendered inside the dash
-  // {
-  //   path: '/',
-  //   meta: {
-  //     name: '',
-  //     requiresAuth: false
-  //   },
+   {
+     path: '/',
+     meta: {
+       name: '',
+       requiresAuth: false
+     },
   
     
-    // component: () =>
-    //   import(/* webpackChunkName: "routes" */ `@/views/LoginHome.vue`),
+     component: () =>
+       import(/* webpackChunkName: "routes" */ `@/views/Login.vue`),
     // redirect if already signed in
-  //   beforeEnter: (to, from, next) => {
-  //     if (store.getters.authorized) {
-  //       next('/dashboard')
+     beforeEnter: (to, from, next) => {
+       if (store.getters.authorized) {
+         next('/dashboard')
         
-  //     }
+       }
      
       
-  //     else {
-  //         next('/dashboard')
-  //     }
-  //   },
-  //   children: [
-  //     {
-  //       path: '/',
-  //       component: () => import(`@/components/LoginForm.vue`)
-  //     }
-  //   ]
-  // },
+       else {
+           next()
+       }
+     },
+     children: [
+       {
+         path: '/',
+         component: () => import(`@/views/Login.vue`)
+       }
+     ]
+   },
   // add any extra routes that you want rendered in the dashboard as a child below. Change toolbar names here
   {
     path: '/dashboard',
     meta: {
       name: 'Dashboard',
-      requiresAuth: false
+      requiresAuth: true
     },
     component: () => import(`@/views/DashboardView.vue`),
     
@@ -50,7 +59,7 @@ export default [
     path: '/projects',
     meta: {
       name: 'Complaints',
-      requiresAuth: false
+      requiresAuth: true
     },
     component: () => import(`@/views/Complaints.vue`),
   },
@@ -58,7 +67,7 @@ export default [
     path: '/team',
     meta: {
       name: 'Registry',
-      requiresAuth: false
+      requiresAuth: true
     },
     component: () => import(`@/views/Team.vue`),
   },
@@ -68,7 +77,7 @@ export default [
     meta: {
       
    
-      requiresAuth: false
+      requiresAuth: true
     },
     component: () => import(`@/views/Stepperview.vue`),
     
@@ -101,7 +110,7 @@ export default [
     meta: {
       
    
-      requiresAuth: false
+      requiresAuth: true
     },
     component: () => import(`@/views/Schedule.vue`),
     
@@ -112,7 +121,7 @@ export default [
     meta: {
       
    
-      requiresAuth: false
+      requiresAuth: true
     },
     component: () => import(`@/views/Comps.vue`),
     

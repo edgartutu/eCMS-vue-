@@ -55,6 +55,8 @@ import axios from 'axios'
         v => !!v || 'Input is required',
         // v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
+      email: localStorage.getItem('user'),
+      token: localStorage.getItem('token')
       }
     },
     created() {
@@ -64,8 +66,14 @@ import axios from 'axios'
       declined(){
         //console.log(this.userData.refnumber)
         axios.post('http://127.0.0.1:5000/postcomplaints',{
-          'status':'Unresolved','comment':this.comment,'complaints_refn0':this.userData.refnumber, 'admin_email':1234
-          }) .then(response=>{
+          'status':'Unresolved','comment':this.comment,'complaints_refn0':this.userData.refnumber, 'admin_email':this.email
+          },
+          {
+            headers:{
+            'x-access-token':this.token
+          }
+          }
+          ) .then(response=>{
                 window.location.reload()
             })
       }

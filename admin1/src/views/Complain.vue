@@ -65,6 +65,7 @@ export default{
         select2:'',
         complaints:'',
         rules: [v => v.length <= 500 || 'Max 500 characters'],
+        email: localStorage.getItem('user'),
       items: [
         'Item 1',
         'Item 2',
@@ -78,7 +79,8 @@ export default{
        radios: 'radio-1',
       projects:[],
       dialog: false,
-      complaint:'Complaint Form'
+      complaint:'Complaint Form',
+      token: location.getItem('token')
       
      
     }
@@ -100,8 +102,14 @@ export default{
         else return 'green darken-2'
       },
       submit(){
-        axios.post('http://127.0.0.1:5000/postadmin1Complaint',{'email':'1234','agent_staff':this.select,
-     'district':this.district,'poling_station':this.town,'nature_complaint':this.select2,'complaint':this.complaint}).then(response=>{
+        axios.post('http://127.0.0.1:5000/postadmin1Complaint',{'email':this.email,'agent_staff':this.select,
+     'district':this.district,'poling_station':this.town,'nature_complaint':this.select2,'complaint':this.complaint},
+     {
+       headers:{
+       'x-access-token':this.token
+     }
+     }
+     ).then(response=>{
                 window.location.reload()
             })
       }

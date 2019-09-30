@@ -7,14 +7,17 @@ export default {
     return new Promise((resolve, reject) => {
       commit('auth_request')
       
-      axios.post('/login-admin', { username: userData.username, password: userData.password })
+      axios.post('/districtadminlogin', { username: userData.username, password: userData.password })
         .then(response => {
           const token = response.data.token
           const user = response.data.username
+          const district = response.data.district
           //console.log(token)
           // storing jwt in localStorage. https cookie is safer place to store
           localStorage.setItem('token', token)
           localStorage.setItem('user', user)
+          localStorage.setItem('district',district)
+          
           axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
           // mutation to change state properties to the values passed along
           commit('auth_success', { token, user })

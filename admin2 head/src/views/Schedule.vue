@@ -28,6 +28,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 import navbar from '../components/DashViews/NavBar'
 import oclock from '../components/DashViews/Oclock'
 import decline from '../components/DashViews/Stores.vue'

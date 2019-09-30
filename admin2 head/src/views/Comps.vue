@@ -78,7 +78,9 @@ export default{
        radios: 'radio-1',
       projects:[],
       dialog: false,
-      complaint:'Complaint Form'
+      complaint:'Complaint Form',
+      user: localStorage.getItem('user'),
+      token: localStorage.getItem('token')
       
      
     }
@@ -100,8 +102,8 @@ export default{
         else return 'green darken-2'
       },
       submit(){
-        axios.post('http://127.0.0.1:5000/Postzadmin2Complaint',{'email':'1234','agent_staff':this.select,
-     'district':this.district,'poling_station':this.town,'nature_complaint':this.select2,'complaint':this.complaint}).then(response=>{
+        axios.post('http://127.0.0.1:5000/Postzadmin2Complaint',{'email':this.user,'agent_staff':this.select,
+     'district':this.district,'poling_station':this.town,'nature_complaint':this.select2,'complaint':this.complaint},{headers:{'x-access-token':this.token}}).then(response=>{
                 window.location.reload()
             })
       }

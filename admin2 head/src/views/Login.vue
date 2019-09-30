@@ -40,6 +40,7 @@
                   <v-text-field
                     label="Login"
                     name="login"
+                    v-model="username"
                     prepend-icon="person"
                     type="text"
                   ></v-text-field>
@@ -48,6 +49,7 @@
                     id="password"
                     label="Password"
                     name="password"
+                    v-model="password"
                     prepend-icon="lock"
                     type="password"
                   ></v-text-field>
@@ -55,7 +57,7 @@
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn color="primary" @click="login">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -63,12 +65,31 @@
 </template>
 
 <script>
+import axios from 'axios'
   export default {
     props: {
       source: String,
     },
-    data: () => ({
-      drawer: null,
-    }),
+    data: function(){
+      return{
+        drawer: null,
+        username:'',
+        password:'',
+      }
+      
+    },
+    methods: {
+    login: function () {
+      let username = this.username
+      let password = this.password
+      this.$store.dispatch('login', { username, password })
+        .then(() => this.$router.push('/dashboard'))
+        .catch(err => {
+        console.log(err)
+        this.snackbar= true
+        }
+        )
+    }
+  }
   }
 </script>

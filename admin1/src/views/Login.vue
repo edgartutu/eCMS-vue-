@@ -40,6 +40,7 @@
                   <v-text-field
                     label="Login"
                     name="login"
+                    v-model="username"
                     prepend-icon="person"
                     type="text"
                   ></v-text-field>
@@ -50,12 +51,13 @@
                     name="password"
                     prepend-icon="lock"
                     type="password"
+                    v-model="password"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn color="primary" @click="login()">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -67,8 +69,29 @@
     props: {
       source: String,
     },
-    data: () => ({
-      drawer: null,
-    }),
+    data: function () {
+      //drawer: null,
+      return {
+        username:'',
+        password:'',
+        drawer: null,
+        
+      }
+    },
+
+    methods: {
+      login: function () {
+      let username = this.username
+      let password = this.password
+      this.$store.dispatch('login', { username, password })
+        .then(() => this.$router.push('/dashboard'))
+        .catch(err => {
+        console.log(err)
+        this.snackbar= true
+        //.then(response =>{console.log(response)})
+        }
+        )
+    }
+  },
   }
 </script>

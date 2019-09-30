@@ -62,14 +62,16 @@ import axios from 'axios'
       
       ],
       items: [],
-      complaints_refn0:''
+      complaints_refn0:'',
+      token: localStorage.getItem('token'),
+      user: localStorage.getItem('user')
       
     }
     
     
     }, 
     created(){
-      axios.get('http://127.0.0.1:5000/AllDeclinedComplaints').then(
+      axios.get('http://127.0.0.1:5000/AllDeclinedComplaints',{headers:{'x-access-token':this.token}}).then(
         response =>{
           this.items = response.data
         }
@@ -78,7 +80,7 @@ import axios from 'axios'
     methods:{
         retrieve(index){
             this.complaints_refn0 = this.items[index].complaints_refn0
-             axios.post('http://127.0.0.1:5000/updatedeclinedcomplaint',{'admin_email':1234,
+             axios.post('http://127.0.0.1:5000/updatedeclinedcomplaint',{'admin_email':this.user,
              'complaints_refn0':this.complaints_refn0,'status':'Pending'})
             .then(response=>{
                 window.location.reload()
@@ -89,7 +91,7 @@ import axios from 'axios'
              
         },
          exportdb() {
-                axios.post("http://127.0.0.1:5000/excelexport1").then(response => {
+                axios.post("http://127.0.0.1:5000/excelexport1",{headers:{'x-access-token':this.token}}).then(response => {
                     console.log(response)
                 })
             },

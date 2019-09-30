@@ -40,6 +40,7 @@
                 <v-form>
                   <v-text-field
                     label="Name"
+                    v-model="name"
                     name="login"
                     prepend-icon="person"
                     type="text"
@@ -47,26 +48,44 @@
 
                   <v-text-field
                     label="Email"
+                    v-model="email"
                     name="login"
                     prepend-icon="email"
                     type="text"
                   ></v-text-field>
                   <v-text-field
                     label="Tel"
+                    v-model="tel"
                     name="login"
+                    prepend-icon="email"
+                    type="text"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Post"
+                    v-model="post"
+                    name="post"
+                    prepend-icon="email"
+                    type="text"
+                  ></v-text-field>
+                  <v-text-field
+                    label="District"
+                    v-model="district"
+                    name="district"
                     prepend-icon="email"
                     type="text"
                   ></v-text-field>
                   <v-text-field
                     id="password"
                     label="Password"
+                    v-model="password"
                     name="password"
                     prepend-icon="lock"
                     type="password"
                   ></v-text-field>
                   <v-text-field
-                    id="password"
+                    id="confirm"
                     label="Confirm Password"
+                    v-model="confirm"
                     name="password"
                     prepend-icon="lock"
                     type="password"
@@ -75,19 +94,38 @@
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
-                <v-btn color="primary">Register</v-btn>
+                <v-btn color="primary" @click="submit()">Register</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
 </template>
 <script>
+import axios from 'axios'
   export default {
     props: {
       source: String,
     },
-    data: () => ({
-      drawer: null,
-    }),
+    data() {
+      return {
+        drawer: null,
+        name:'',
+        email:'',
+        tel:'',
+        post:'',
+        password:'',
+        confirm:'',
+        district:'',
+      }
+      
+    },
+    methods:{
+      submit(){
+        //console.log('hello')
+        axios.post('http://127.0.0.1:5000/register',{
+          'Name':this.name,'email':this.email,'post':this.post,'district':this.district,'tel':this.tel,'password':this.password,'confirm_password':this.confirm
+          })
+      }
+    }
   }
 </script>

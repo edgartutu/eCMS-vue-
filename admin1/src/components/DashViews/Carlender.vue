@@ -30,13 +30,22 @@ export default{
 
   data(){
     return{
-      projects:[]
+      projects:[],
+      district: localStorage.getItem('district'),
+      token: localStorage.getItem('token')
 
       
     }
   },
   created(){
-    axios.post('http://127.0.0.1:5000/getcomplaints',{'district_n0':'123432'}).then(response =>{
+    axios.post('http://127.0.0.1:5000/getcomplaints',{'district_n0':this.district},
+    {
+       headers:{
+       'x-access-token':this.token
+     }
+     }
+    
+    ).then(response =>{
       this.projects = response.data
     }
       

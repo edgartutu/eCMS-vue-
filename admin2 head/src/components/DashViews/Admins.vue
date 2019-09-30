@@ -52,13 +52,14 @@ import axios from 'axios'
           { text: 'Telephone', value: 'tel' },
       
       ],
-      items: []
+      items: [],
+      token: localStorage.getItem('token')
       
     }
     
     },
      created(){
-      axios.get('http://127.0.0.1:5000/Alllevelones').then(
+      axios.get('http://127.0.0.1:5000/Alllevelones',{headers:{'x-access-token':this.token}}).then(
         response =>{
           this.items = response.data
         }

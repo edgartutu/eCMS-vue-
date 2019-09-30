@@ -202,6 +202,8 @@ import unresolve from '../components/DashViews/Unresolved.vue'
         v => !!v || 'Input is required',
         // v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
+      email: localStorage.getItem('user'),
+      token: localStorage.getItem('token')
       
       }
     },
@@ -212,11 +214,16 @@ import unresolve from '../components/DashViews/Unresolved.vue'
     methods:{
       submit(){
         axios.post('http://127.0.0.1:5000/postcomplaints',{
-          'status':'Resolved','complaints_refn0':this.userData.refnumber, 'admin_email':1234,
+          'status':'Resolved','complaints_refn0':this.userData.refnumber, 'admin_email':this.email,
           'districtagent_idn0':this.nin,'districtagent_post':this.post,
           'district_resolutions':this.resolution,'classify_complaint':this.classification,
           'district_description':this.details
-          })
+          },
+          {
+            headers:{
+            'x-access-token':this.token
+            }
+        })
           // console.log(this.userData.refnumber)
       }
     }

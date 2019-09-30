@@ -16,6 +16,7 @@ export default {
   },
   data() {
     return {
+      token: localStorage.getItem('token'),
       stuff:null,
       chartOptions: {
       hoverBorderWidth:0,
@@ -41,7 +42,7 @@ export default {
     };
   },
   created(){
-    axios.post('http://127.0.0.1:5000/adminpiechart').then(response =>{
+    axios.post('http://127.0.0.1:5000/adminpiechart',{headers:{'x-access-token':this.token}}).then(response =>{
      
       let result= response.data.data
       this.stuff=result
