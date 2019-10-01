@@ -10,6 +10,7 @@
 
 <script>
   import BarChart from '../BarChart.js';
+  import  axios from 'axios'
 
   export default {
     components: {
@@ -17,6 +18,8 @@
     },
     data () {
       return {
+        datas:null,
+        datah:null,
         datacollection: null,
         options:{
           xAxes: [{
@@ -31,6 +34,14 @@
         }
 
       }
+    },created(){
+        axios.post('http://127.0.0.1:5000/Monthlysbar').then(
+      response => {this.datas = response.data.dema
+                    this.datah = response.data.deta
+                   
+                // console.log(this.datah)
+      })
+      
     },
     mounted () {
       this.fillData()
@@ -43,11 +54,11 @@
             {
               label: 'Unresolved',
               backgroundColor: '#AB47BC',
-              data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+              data: []
             }, {
               label: 'Resolved',
               backgroundColor: '#004080',
-              data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+              data: []
             }
           ]
         }
@@ -56,7 +67,19 @@
       getRandomInt () {
         return Math.floor(Math.random() * (50 - 5 + 1)) + 5
       }
+    },
+     watch:{
+    datas(newData){
+      const data =this.datacollection
+      data.datasets[1].data=newData
+      this.datacollection={...data}
+    },
+    datah(newData){
+      const data =this.datacollection
+      data.datasets[0].data=newData
+      this.datacollection={...data}
     }
+  },
   }
 </script>
 

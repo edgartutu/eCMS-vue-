@@ -104,7 +104,9 @@ import axios from 'axios'
       submit(){
         axios.post('http://127.0.0.1:5000/head_register',{
           'Name':this.name,'email':this.email,'tel':this.tel,'password':this.password,'confirm_password':this.confirm
-          })
+          }).then(response=>{
+                window.location.reload()
+            })
           }
 
       }

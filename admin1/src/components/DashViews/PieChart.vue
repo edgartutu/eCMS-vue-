@@ -54,6 +54,7 @@ export default {
       let result= response.data.data
       this.stuff=result
       console.log(this.stuff)
+      console.log(this.district)
 
     })
   },

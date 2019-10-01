@@ -41,7 +41,7 @@
 						</v-list> -->
 					</v-card>
 				</v-menu>
-                     <v-btn flat class="white--text">
+                     <v-btn flat class="white--text" @click=" logout()">
                     <span>SignOut</span>
                     <v-icon>exit_to_app</v-icon>
                     </v-btn> 
@@ -72,7 +72,16 @@ export default {
           console.log(this.response)
         }
       )
-    }
+    },
+ methods:{
+        logout() {
+				this.$store.dispatch("logout").then(() => {
+					this.$router.push("/");
+				});
+			}
+      
+      }
+       
 }
 </script>
 
