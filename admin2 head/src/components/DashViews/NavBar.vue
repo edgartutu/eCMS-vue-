@@ -29,7 +29,9 @@
                 <v-menu bottom left content-class offset-y transition="slide-y-transition">
 					<router-link v-ripple slot="activator"  to="/projects">
 						<v-badge class="#E65100" overlap>
-					        <template slot="badge">{{projects.length}}</template>
+					        <template slot="badge"  >
+                               {{projects.length}}
+                                </template>
 					            <v-icon class="mx-2" color>mdi-bell</v-icon>
 				        </v-badge>
 					</router-link>
@@ -47,6 +49,7 @@
                     </v-btn> 
         </v-toolbar>
     </nav>
+    
 </template>
 <script>
 import axios from 'axios'
@@ -59,6 +62,7 @@ export default {
                 { text:'Registry',route:'/team'},
                  { text:'Admistration',route:'/time'},
             ],
+            lengths:[],
             projects:[
       
       ],
@@ -66,19 +70,40 @@ export default {
         }
     },
     created(){
-      axios.get('http://127.0.0.1:5000/alladmincomplaints',{headers:{'x-access-token':this.token}}).then(
+      axios.post('http://127.0.0.1:5000/Unresolves',{headers:{'x-access-token':this.token}}).then(
         response =>{
           this.projects = response.data
-          console.log(this.response)
+       
+         
+         
+            
+           
         }
       )
     },
+//    mounted(){
+
+//            for (project in projects){
+//                if(project.status==="Unresolved")
+               
+//                 return this.lengths.push(this.projects)
+               
+               
+              
+              
+//            }
+//             console.log(this.lengths)
+//    },
+    
+  
+
  methods:{
         logout() {
 				this.$store.dispatch("logout").then(() => {
 					this.$router.push("/");
 				});
-			}
+            },
+          
       
       }
        

@@ -77,6 +77,8 @@
                                       <p>{{props.item.date_submit}}</p> 
                                          <h4 class="font-weight-bold">Resolution Details</h4>
                                       <p>{{props.item.district_resolutions}}</p>
+                                       <h4 class="font-weight-bold">HeadQuater Resolution Details</h4>
+                                      <p>{{props.item.headresolution}}</p>
                                       
                                       
                                   </v-card-text>     

@@ -124,7 +124,7 @@
           Back
         </v-btn>
         <v-btn
-         
+          :disabled="clickable"
           color="green darken-4"
           @click="e1 = 3;submit()"
         >
@@ -210,6 +210,13 @@ import unresolve from '../components/DashViews/Unresolved.vue'
     created() {
             this.userData = this.$route.params.userData;
         },
+        computed: {
+  isDisabled() {
+    if (status =="Resolved" ){
+      return false;
+    }
+  }
+},
 
     methods:{
       submit(){

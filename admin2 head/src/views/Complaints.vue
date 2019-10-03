@@ -56,6 +56,7 @@
        </v-tooltip>
 
      </v-layout>
+
      <v-card flat class="white"  v-for="project in projects" :key="project.title">
        <v-layout row wrap :class="`pa-3 project ${project.status}`">
          <v-flex xs12 md4>
@@ -108,6 +109,7 @@
 </template>
 
 <script>
+
 import navbar from '../components/DashViews/NavBar'
 import axios from 'axios'
 export default{

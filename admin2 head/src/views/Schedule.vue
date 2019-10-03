@@ -3,14 +3,14 @@
         <navbar/>
        <v-layout row wrap justify-space-around>
      <v-flex xs10 md5>
-       <v-card class="pa-3" outline  max-width="800" height="400px">
+       <!-- <v-card class="pa-3" outline  max-width="800" height="400px"> -->
          
-          <v-date-picker flat light green color="purple"   v-model="picker"></v-date-picker>
+          <v-date-picker  class="pa-3" outline  max-width="800" height="400px" flat dark green color="purple"   v-model="picker"></v-date-picker>
          
-       </v-card>
+       <!-- </v-card> -->
      </v-flex>
      <v-flex xs10 md5>
-       <v-card class="pa-2" outline max-width="800"  height="400px"> 
+       <v-card class="pa-2"  outline max-width="800"  height="400px"> 
          <div width="1000px"></div>
           <admin/>
        </v-card>
@@ -24,7 +24,6 @@
        </v-card>
      </v-flex>
    </v-layout>
-  
     </div>
 </template>
 <script>

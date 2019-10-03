@@ -127,7 +127,7 @@
           Back
         </v-btn>
         <v-btn
-         
+         :disabled="clickable"
           color="green darken-4"
           @click="e1 = 3; submit()"
         >
@@ -136,7 +136,7 @@
         
         <v-btn class="right"
           color="primary"
-          @click="e1 = 3; submit()"
+          @click="e1 = 3; "
           small
           tile 
           outlined
@@ -211,6 +211,16 @@ import decline from '../components/DashViews/Decline.vue'
     created() {
             this.userData = this.$route.params.userData;
         },
+        computed: {
+  isDisabled() {
+    if (status =="Resolved" ){
+      return false;
+    }else{
+      return true;
+    }
+    
+  }
+},
     methods:{
       submit(){
         axios.post('http://127.0.0.1:5000/adminpostcomplaints',{

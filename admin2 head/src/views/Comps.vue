@@ -2,7 +2,7 @@
 <div class="dashboard">
     <navbar/>
     <v-layout wrap >
-    <h2 class="purple--text">{{complaint}}</h2>
+    <h2 class="purple--text">Complaint Form</h2>
          <v-flex xs12 md12>
             <v-card flat class="white "  >
               <v-container fluid >
@@ -32,9 +32,9 @@
                 <v-flex xs12 md12>
                   
                   <v-textarea
-                    v-model="complaints"
+                    v-model="inputs"
                     counter
-                    label="Complaint"
+                    label="Complaints"
                     :rules="rules"
                     
                   ></v-textarea>
@@ -46,7 +46,7 @@
             </v-card>
          </v-flex>
        </v-layout>
-  
+   
 </div>
 </template>
 
@@ -59,11 +59,12 @@ export default{
     },
   data(){
     return{
+      snackbar:false,
         district:'',
         town:'',
         select:'',
         select2:'',
-        complaints:'',
+        inputs:'',
         rules: [v => v.length <= 500 || 'Max 500 characters'],
       items: [
         'Item 1',
@@ -78,7 +79,6 @@ export default{
        radios: 'radio-1',
       projects:[],
       dialog: false,
-      complaint:'Complaint Form',
       user: localStorage.getItem('user'),
       token: localStorage.getItem('token')
       
@@ -103,8 +103,10 @@ export default{
       },
       submit(){
         axios.post('http://127.0.0.1:5000/Postzadmin2Complaint',{'email':this.user,'agent_staff':this.select,
-     'district':this.district,'poling_station':this.town,'nature_complaint':this.select2,'complaint':this.complaint},{headers:{'x-access-token':this.token}}).then(response=>{
-                window.location.reload()
+     'district':this.district,'poling_station':this.town,'nature_complaint':this.select2,'complaint':this.inputs},{headers:{'x-access-token':this.token}}).then(response=>{
+               
+                // window.location.reload()
+                this.snackbar=true
             })
       }
         

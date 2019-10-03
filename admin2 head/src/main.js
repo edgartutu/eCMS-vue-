@@ -25,10 +25,14 @@ import axios from 'axios'
 import excel from 'vue-excel-export'
 import VueCharts from 'vue-chartjs'
 import Spinner from 'vue-simple-spinner'
+import Notify from 'vue-notify-me'
+import Clock from 'vue-clock2';
 
 Vue.use(Spinner)
+Vue.use( Notify)
 Vue.use(VueCharts)
 Vue.use(excel)
+Vue.use(Clock)
 Vue.prototype.$http = axios;
 // Sets the default url used by all of this axios instance's requests
 

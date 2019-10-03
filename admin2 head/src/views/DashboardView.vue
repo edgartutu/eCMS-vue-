@@ -4,22 +4,30 @@
  
    <v-layout row wrap justify-space-around>
      <v-flex xs10 md5>
-       <v-card class="pa-3" outline  max-width="800" height="400px">
+       <v-hover v-slot:default="{ hover }">
+      <v-card :elevation="hover ? 12 : 2" class="pa-3" outline  max-width="800" height="400px">
          <pie/>
        </v-card>
+       </v-hover>
      </v-flex>
      <v-flex xs10 md5>
-       <v-card class="pa-2" outline max-width="800"  height="400px"> 
+       <v-hover v-slot:default="{ hover }">
+        <v-card :elevation="hover ? 12 : 2" class="pa-2" outline max-width="800"  height="400px"> 
          <div width="1000px"><bar/></div>
          
        </v-card>
+       </v-hover >
+      
      </v-flex>
    </v-layout><br>
    <v-layout row wrap justify-space-around>
      <v-flex xs10 md5>
-       <v-card class="pa-3" outline max-width="800"  height="400px">
-         <donut/>
+       <v-hover v-slot:default="{ hover }">
+            <v-card :elevation="hover ? 12 : 2" class="pa-3" outline max-width="800"  height="400px">
+         <clock/>
        </v-card>
+       </v-hover>
+       
      </v-flex>
      <v-flex xs10 md5 >
        <v-card max-height="400px" style="overflow-y: auto" class="pa-3" outline max-width="800"  height="400px">
@@ -41,6 +49,7 @@ import donut from '../components/DashViews/Donut.vue';
 import bar from '../components/DashViews/BarChart.vue'
 import carlender from '../components/DashViews/Carlender.vue'
 import navbar from '../components/DashViews/NavBar'
+import clock from '../components/DashViews/Clock'
 
 export default{
     components:{
@@ -48,7 +57,8 @@ export default{
       donut,
       bar,
       carlender,
-      navbar
+      navbar,
+      clock
     },
   data(){
     return{
