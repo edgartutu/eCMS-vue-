@@ -134,7 +134,7 @@ $angle: 30deg;
         transform: translate(-50%, -50%);
         border: 2px solid #666666;
         border-radius: 100%;
-        background-color:purple;
+        background-color:orangered;
         z-index: 1;
         box-sizing: border-box;
         &:before {
