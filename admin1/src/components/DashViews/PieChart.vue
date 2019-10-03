@@ -42,6 +42,7 @@ export default {
       }
     };
   },
+  
   created(){
     axios.post('http://127.0.0.1:5000/piechart',{'district_n0':this.district},
     {
@@ -54,7 +55,7 @@ export default {
       let result= response.data.data
       this.stuff=result
       console.log(this.stuff)
-      console.log(this.district)
+      
 
     })
   },
