@@ -68,7 +68,7 @@ export default {
         }
     },
       created(){
-           axios.post('http://127.0.0.1:5000/Unresolves',{'district_n0':this.district}).then(
+           axios.post('http://127.0.0.1:5000/Pendings',{'district_n0':this.district}).then(
         response =>{
           this.projects = response.data
            
