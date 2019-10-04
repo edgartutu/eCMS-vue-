@@ -4,8 +4,8 @@
        <v-layout row wrap justify-space-around>
      <v-flex xs10 md5>
        <!-- <v-card class="pa-3" outline  max-width="800" height="400px"> -->
-         
-          <v-date-picker  class="pa-3" outline  max-width="800" height="400px" flat dark green color="purple"   v-model="picker"></v-date-picker>
+         <clock/>
+          <!-- <v-date-picker  class="pa-3" outline  max-width="800" height="400px" flat dark green color="purple"   v-model="picker"></v-date-picker> -->
          
        <!-- </v-card> -->
      </v-flex>
@@ -32,13 +32,16 @@ import navbar from '../components/DashViews/NavBar'
 import oclock from '../components/DashViews/Oclock'
 import decline from '../components/DashViews/Stores.vue'
 import admin from '../components/DashViews/Admins.vue'
+import clock from '../components/DashViews/Clock'
+
 
 export default {
     components:{
         navbar,
         oclock,
         decline,
-        admin
+        admin,
+        clock
     },
      data () {
       return {

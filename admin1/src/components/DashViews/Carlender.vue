@@ -59,7 +59,7 @@ export default{
 
 <style lang="stylus" scoped>
 .project.Pending{
-  border-left: 4px solid #3cd1c2;
+  border-left: 4px solid #5e0c1d;
 }
 .project.Resolved{
   border-left: 4px solid #004080;

@@ -24,7 +24,7 @@
      <v-flex xs10 md5>
        <v-hover v-slot:default="{ hover }">
             <v-card :elevation="hover ? 12 : 2" class="pa-3" outline max-width="800"  height="400px">
-         <clock/>
+         <donut/>
        </v-card>
        </v-hover>
        

@@ -8,7 +8,9 @@
             sm="8"
             md="4"
           >
-            <v-card class="elevation-12" style="margin-left:20%;margin-right:20%;">
+          <v-layout  row justify-center>
+            <v-flex sm12 md6>
+                <v-card class="elevation-12" >
               <v-toolbar
                 color="#004080"
                 dark
@@ -41,6 +43,7 @@
                     label="Login"
                     name="login"
                     v-model="username"
+                    :rules="[() => !!username || 'This field is required']"
                     prepend-icon="person"
                     type="text"
                   ></v-text-field>
@@ -50,6 +53,7 @@
                     label="Password"
                     name="password"
                     v-model="password"
+                     :rules="[() => !!password || 'This field is required']"
                     prepend-icon="lock"
                     type="password"
                   ></v-text-field>
@@ -60,6 +64,10 @@
                 <v-btn color="primary" @click="login">Login</v-btn>
               </v-card-actions>
             </v-card>
+
+            </v-flex>
+          </v-layout>
+            
           </v-col>
         </v-row>
 </template>

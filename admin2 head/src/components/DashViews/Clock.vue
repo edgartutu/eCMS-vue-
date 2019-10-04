@@ -1,6 +1,8 @@
 <template>
     <!-- <div class="clock" :class="{'is-small':size==='small'}" :style="clockStyle"> -->
-    <div class="clock" :style="clockStyle">
+        <v-layout row style="margin-left:12%;" >
+            <v-flex sm6  >
+                     <div class="clock" :style="clockStyle">
         <div class="clock-circle"></div>
         <div class="clock-hour" :style="{transform:hourRotate}"></div>
         <div class="clock-minute" :style="{transform:minuteRotate}"></div>
@@ -11,6 +13,9 @@
             </span>
         </b>
     </div>
+            </v-flex>
+        </v-layout>
+   
 </template>
 
 <script>
@@ -89,7 +94,7 @@ $angle: 30deg;
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    width: 500px;
+    width: 400px;
     height: 380px;
     color: blueviolet;
     border: 1px solid;

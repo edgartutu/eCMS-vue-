@@ -8,10 +8,11 @@
             sm="8"
             md="4"
           >
-           
-            <v-card class="elevation-12" style="margin-left:20%;margin-right:20%;">
+          <v-layout row justify-center>
+            <v-flex sm12 md6>
+                 <v-card class="elevation-12" >
               <v-toolbar
-                color="#004080"
+                color="#5e0c1d"
                 dark
                 flat
               >
@@ -43,6 +44,7 @@
                     v-model="name"
                     name="login"
                     prepend-icon="person"
+                     :rules="[() => !!password || 'This field is required']"
                     type="text"
                   ></v-text-field>
 
@@ -51,6 +53,7 @@
                     v-model="email"
                     name="login"
                     prepend-icon="email"
+                     :rules="[() => !!password || 'This field is required']"
                     type="text"
                   ></v-text-field>
                   <v-text-field
@@ -58,6 +61,7 @@
                     v-model="tel"
                     name="login"
                     prepend-icon="email"
+                     :rules="[() => !!password || 'This field is required']"
                     type="text"
                   ></v-text-field>
                   <v-text-field
@@ -65,6 +69,7 @@
                     v-model="post"
                     name="post"
                     prepend-icon="email"
+                     :rules="[() => !!password || 'This field is required']"
                     type="text"
                   ></v-text-field>
                   <v-text-field
@@ -72,6 +77,7 @@
                     v-model="district"
                     name="district"
                     prepend-icon="email"
+                     :rules="[() => !!password || 'This field is required']"
                     type="text"
                   ></v-text-field>
                   <v-text-field
@@ -79,6 +85,7 @@
                     label="Password"
                     v-model="password"
                     name="password"
+                     :rules="[() => !!password || 'This field is required']"
                     prepend-icon="lock"
                     type="password"
                   ></v-text-field>
@@ -87,6 +94,7 @@
                     label="Confirm Password"
                     v-model="confirm"
                     name="password"
+                     :rules="[() => !!password || 'This field is required']"
                     prepend-icon="lock"
                     type="password"
                   ></v-text-field>
@@ -97,6 +105,10 @@
                 <v-btn color="primary" @click="submit()">Register</v-btn>
               </v-card-actions>
             </v-card>
+            </v-flex>
+          </v-layout>
+           
+           
           </v-col>
         </v-row>
 </template>

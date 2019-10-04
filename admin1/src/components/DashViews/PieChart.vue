@@ -35,7 +35,7 @@ export default {
         datasets: [
           {
             label: "Data One",
-            backgroundColor: ["#E65100", "#004080", "#0acfbe"],
+            backgroundColor: ["#E65100", "#5e0c1d", "#0acfbe"],
             data:this.stuff
           }
         ]
@@ -44,7 +44,7 @@ export default {
   },
   
   created(){
-    axios.post('http://127.0.0.1:5000/piechart',{'district_n0':this.district},
+    axios.post('http://127.0.0.1:5000/piechart',{'district_n0':localStorage.getItem('district')},
     {
        headers:{
        'x-access-token':this.token
@@ -54,7 +54,7 @@ export default {
      
       let result= response.data.data
       this.stuff=result
-      console.log(this.stuff)
+      console.log(this.district)
       
 
     })

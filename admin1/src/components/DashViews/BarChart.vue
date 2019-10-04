@@ -36,7 +36,7 @@
       }
     },
     created(){
-        axios.post('http://127.0.0.1:5000/Monthly',{"district_n0":123456}).then(
+        axios.post('http://127.0.0.1:5000/Monthly',{"district_n0":localStorage.getItem('district')}).then(
       response => {this.datas = response.data.dema
                     this.datah = response.data.deta
                    
@@ -57,7 +57,7 @@
           datasets: [
             {
               label: 'Unresolved',
-              backgroundColor: '#AB47BC',
+              backgroundColor: '#5e0c1d',
               datas: []
             }, {
               label: 'Resolved',

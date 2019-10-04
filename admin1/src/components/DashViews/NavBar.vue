@@ -1,6 +1,6 @@
 <template>
     <nav>
-       <v-toolbar style=" background-color: #004080;" app fixed>
+       <v-toolbar style=" background-color: #5e0c1d;" app fixed>
            <v-toolbar-title class="purple--text" >eCMS</v-toolbar-title>
            <p></p>
            <p></p>
@@ -68,15 +68,12 @@ export default {
         }
     },
       created(){
-    axios.post('http://127.0.0.1:5000/getcomplaints',{'district_n0':this.district},
-    {
-       headers:{
-       'x-access-token':this.token
-     }
-     }
-    ).then(
-      response => {this.projects = response.data})
-    //   console.log(this.response)
+           axios.post('http://127.0.0.1:5000/Unresolves',{'district_n0':this.district}).then(
+        response =>{
+          this.projects = response.data
+           
+        }
+      )
   },
   methods:{
         logout() {

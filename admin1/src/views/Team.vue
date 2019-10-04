@@ -34,7 +34,7 @@
               <tr @click="props.expanded = !props.expanded">  
                 <td class="datatable-cell-wrapper"><div>{{ props.item.nature_complaint }}</div></td>
                 <td class="datatable-cell-wrapper"><div>{{ props.item.complaints_refn0}}</div></td>
-                <td class="datatable-cell-wrapper">{{ props.item.complaint }}</td>
+                <!-- <td class="datatable-cell-wrapper">{{ props.item.complaint }}</td> -->
                 <td class="datatable-cell-wrapper">{{ props.item.district }}</td>
                 <td class="datatable-cell-wrapper">{{ props.item.date }}</td>
                 <td class="datatable-cell-wrapper">{{ props.item.date_submit }}</td>
@@ -133,7 +133,7 @@ import axios from 'axios'
       headers: [
         { text: 'Complaint Category', value: 'nature_complaint' },
         { text: 'Complaint Ref', value: 'complaints_refn0' },
-          { text: 'Complainant', value: 'complaint' },
+          // { text: 'Complainant', value: 'complaint' },
           { text: 'Location', value: 'district' },
           { text: 'Date Recieved', value: 'date' },
           { text: 'Date Resolved ', value: 'date_submit' },

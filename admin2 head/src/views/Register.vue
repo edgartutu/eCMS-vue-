@@ -8,8 +8,9 @@
             sm="8"
             md="4"
           >
-           
-            <v-card class="elevation-12" style="margin-left:20%;margin-right:20%;">
+          <v-layout row justify-center>
+            <v-flex sm12 md6>
+                 <v-card class="elevation-12" >
               <v-toolbar
                 color="#004080"
                 dark
@@ -43,6 +44,7 @@
                     name="login"
                     v-model="name"
                     prepend-icon="person"
+                     :rules="[() => !!password || 'This field is required']"
                     type="text"
                   ></v-text-field>
 
@@ -50,6 +52,7 @@
                     label="Email"
                     name="login"
                     v-model="email"
+                     :rules="[() => !!password || 'This field is required']"
                     prepend-icon="email"
                     type="text"
                   ></v-text-field>
@@ -57,6 +60,7 @@
                     label="Tel"
                     name="login"
                     v-model="tel"
+                     :rules="[() => !!password || 'This field is required']"
                     prepend-icon="email"
                     type="text"
                   ></v-text-field>
@@ -66,6 +70,7 @@
                     v-model="password"
                     name="password"
                     prepend-icon="lock"
+                     :rules="[() => !!password || 'This field is required']"
                     type="password"
                   ></v-text-field>
                   <v-text-field
@@ -74,6 +79,7 @@
                     v-model="confirm"
                     name="password"
                     prepend-icon="lock"
+                    :rules="[() => !!password || 'This field is required']"
                     type="password"
                   ></v-text-field>
                 </v-form>
@@ -83,6 +89,10 @@
                 <v-btn color="primary" @click="submit()">Register</v-btn>
               </v-card-actions>
             </v-card>
+            </v-flex>
+          </v-layout>
+           
+           
           </v-col>
         </v-row>
 </template>
