@@ -69,7 +69,7 @@ import axios from 'axios'
     methods:{
       declined(){
         //console.log(this.userData.refnumber)
-        axios.post('http://127.0.0.1:5000/postcomplaints',{
+        axios.post('http://127.0.0.1:5000/adminpostcomplaints',{
           'status':'Declined','comment':this.comments,'complaints_refn0':this.userData.refnumber, 'admin_email':this.user
           },
           {headers:{'x-access-token':this.token}}

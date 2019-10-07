@@ -2,13 +2,13 @@
     <div>
         <navbar/>
        <v-layout row wrap justify-space-around>
-     <v-flex xs10 md5>
-       <!-- <v-card class="pa-3" outline  max-width="800" height="400px"> -->
-         <clock/>
-          <!-- <v-date-picker  class="pa-3" outline  max-width="800" height="400px" flat dark green color="purple"   v-model="picker"></v-date-picker> -->
+     <!-- <v-flex xs10 md5>
+       <v-card class="pa-3" outline  max-width="800" height="400px">
+      
+          <v-date-picker  class="pa-3" outline  width="200" height="300px" flat dark green color="purple"   v-model="picker"></v-date-picker>
          
-       <!-- </v-card> -->
-     </v-flex>
+       </v-card>
+     </v-flex> -->
      <v-flex xs10 md5>
        <v-card class="pa-2"  outline max-width="800"  height="400px"> 
          <div width="1000px"></div>

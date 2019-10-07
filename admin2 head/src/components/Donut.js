@@ -8,8 +8,14 @@ export default {
     this.renderChart(this.data, {
       borderWidth: "1000px",
       hoverBackgroundColor: "red",
-      hoverBorderWidth: "5px",
-      cutoutPercentage:65,
+      hoverBorderWidth: "2px",
+      cutoutPercentage:100,
     });
+  },
+
+watch: {
+  'data' (to, from) {
+    this.renderChart(this.data, this.options)
   }
+}
 };

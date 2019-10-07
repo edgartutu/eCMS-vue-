@@ -1,12 +1,32 @@
 <template>
   <div class="small">
-    <pie-chart :data="chartData" :options="chartOptions" width="100%" height="90px" ></pie-chart>
+    <v-layout row>
+         <v-flex xs12 md6>
+                  <!-- <v-select
+                  v-model="district"
+                  :items="items"
+                  label="Classification"
+                   required
+                    ></v-select> -->
+                     <v-autocomplete
+                       v-model="district"
+                        label="Districts"
+                        :items="items"
+                      ></v-autocomplete>
+              </v-flex>
+              <v-spacer></v-spacer>
+               <v-btn class="right purple" small @click="pulldata()">Get District</v-btn>
+    </v-layout>
+    
+              
+    <pie-chart :data="chartData" :options="chartOptions" width="60%" height="45px" ></pie-chart>
   </div>
 </template>
 
 <script>
 import PieChart from "../Donut.js";
 import VueCharts from 'vue-chartjs'
+import axios from 'axios'
 export default {
   name: "App",
   components: {
@@ -14,6 +34,9 @@ export default {
   },
   data() {
     return {
+      district:'',
+      stuff:null,
+      items: null,
       chartOptions: {
         hoverBorderWidth: 10,
         
@@ -22,17 +45,58 @@ export default {
         hoverBackgroundColor: "red",
         hoverBorderWidth: 10,
         
-        labels: ["Green", "Red", "Blue"],
+        labels: ["Resolved", "Unresolved", "Pending"],
         datasets: [
           {
             label: "Data One",
-            backgroundColor: ["#004080", "#E65100", "#00D8FF"],
-            data: [1, 10, 5]
+            backgroundColor: ["#E65100", "#004080", "#0acfbe"],
+            data: this.stuff
           }
         ]
       }
     };
-  }
+  },  created(){
+    axios.post('http://127.0.0.1:5000/CodeDistrict',
+    {
+       headers:{
+       'x-access-token':this.token
+     }
+     }
+    ).then(response =>{
+     
+      let result= response.data
+      this.items=result
+      console.log(this.items)
+      
+
+    })
+  },
+  methods:{
+    pulldata(){
+      axios.post('http://127.0.0.1:5000/PieChartsdistrict',{'district_n0':this.district},
+    {
+       headers:{
+       'x-access-token':this.token
+     }
+     }
+    ).then(response =>{
+     
+      let result= response.data.data
+      this.stuff=result
+      // console.log(this.district)
+      
+
+    })
+
+    }
+  },
+   watch:{
+    stuff(newData){
+      const data =this.chartData
+      data.datasets[0].data=newData
+      this.chartData={...data}
+    }
+  },
 };
 </script>
 

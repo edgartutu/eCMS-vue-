@@ -80,8 +80,8 @@ import axios from 'axios'
     methods:{
         retrieve(index){
             this.complaints_refn0 = this.items[index].complaints_refn0
-             axios.post('http://127.0.0.1:5000/updatedeclinedcomplaint',{'admin_email':this.user,
-             'complaints_refn0':this.complaints_refn0,'status':'Pending'})
+             axios.post('http://127.0.0.1:5000/UpdateDeclinedComplaints',{'admin_email':this.user,
+             'complaints_refn0':this.complaints_refn0,'status':'Unresolved'})
             .then(response=>{
                 window.location.reload()
             })
