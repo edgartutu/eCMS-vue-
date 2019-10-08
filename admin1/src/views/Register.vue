@@ -44,7 +44,7 @@
                     v-model="name"
                     name="login"
                     prepend-icon="person"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!name || 'This field is required']"
                     type="text"
                   ></v-text-field>
 
@@ -53,7 +53,7 @@
                     v-model="email"
                     name="login"
                     prepend-icon="email"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!email || 'This field is required']"
                     type="text"
                   ></v-text-field>
                   <v-text-field
@@ -61,7 +61,7 @@
                     v-model="tel"
                     name="login"
                     prepend-icon="email"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!tel || 'This field is required']"
                     type="text"
                   ></v-text-field>
                   <v-text-field
@@ -69,7 +69,7 @@
                     v-model="post"
                     name="post"
                     prepend-icon="email"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!post || 'This field is required']"
                     type="text"
                   ></v-text-field>
                   <v-text-field
@@ -77,7 +77,7 @@
                     v-model="district"
                     name="district"
                     prepend-icon="email"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!district || 'This field is required']"
                     type="text"
                   ></v-text-field>
                   <v-text-field
@@ -94,7 +94,7 @@
                     label="Confirm Password"
                     v-model="confirm"
                     name="password"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!confirm || 'This field is required']"
                     prepend-icon="lock"
                     type="password"
                   ></v-text-field>

@@ -2,13 +2,13 @@
 <div class="dashboard">
     <navbar/>
     <v-layout wrap >
-    <h2 class="purple--text">{{complaint}}</h2>
+    <h2 class="purple--text">Complaint Form</h2>
          <v-flex xs12 md12>
             <v-card flat class="white "  >
               <v-container fluid >
-              <v-flex xs12 md6>
+              <!-- <v-flex xs12 md6>
                   <v-text-field v-model="district"   label="District code" required ></v-text-field>
-              </v-flex>
+              </v-flex> -->
                 <v-flex xs12 md6>
                   <v-text-field v-model="town"  label="Town" required ></v-text-field>
               </v-flex>
@@ -29,6 +29,7 @@
                    required
                     ></v-select>
               </v-flex>
+              
                 <v-flex xs12 md12>
                   
                   <v-textarea
@@ -59,13 +60,11 @@ export default{
     },
   data(){
     return{
-        district:'',
         town:'',
         select:'',
         select2:'',
         complaints:'',
         rules: [v => v.length <= 500 || 'Max 500 characters'],
-        email: localStorage.getItem('user'),
       items: [
         'Item 1',
         'Item 2',
@@ -79,8 +78,8 @@ export default{
        radios: 'radio-1',
       projects:[],
       dialog: false,
-      complaint:'Complaint Form',
-      token: location.getItem('token')
+    
+      token: localStorage.getItem('token')
       
      
     }
@@ -102,8 +101,8 @@ export default{
         else return 'green darken-2'
       },
       submit(){
-        axios.post('http://127.0.0.1:5000/postadmin1Complaint',{'email':this.email,'agent_staff':this.select,
-     'district':this.district,'poling_station':this.town,'nature_complaint':this.select2,'complaint':this.complaint},
+        axios.post('http://127.0.0.1:5000/postadmin1Complaint',{'email':localStorage.getItem('user'),'agent_staff':this.select,
+     'district':localStorage.getItem('district'),'poling_station':this.town,'nature_complaint':this.select2,'complaint':this.complaints},
      {
        headers:{
        'x-access-token':this.token

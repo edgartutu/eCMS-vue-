@@ -49,13 +49,18 @@
                   ></v-text-field>
 
                   <v-text-field
-                    id="password"
-                    label="Password"
-                    name="password"
-                    prepend-icon="lock"
-                    type="password"
-                     :rules="[() => !!password || 'This field is required']"
-                    v-model="password"
+                   ref="password"
+                  v-model="password"
+                  :rules="[() => !!password || 'This field is required']"
+                  :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+                  :type="showPassword ? 'text' : 'password'"
+                  prepend-icon="mdi-lock"
+                  label="Password"
+                  placeholder="*********"
+                  counter
+                  required
+                  @keydown.enter="login"
+                  @click:append="showPassword = !showPassword"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -63,6 +68,20 @@
                 <div class="flex-grow-1"></div>
                 <v-btn color="primary" @click="login()">Login</v-btn>
               </v-card-actions>
+              <v-snackbar
+              v-model="snackbar"
+              :color="color"
+              :top='true'
+            >
+              {{ errorMessages }}
+              <v-btn
+                dark
+                flat
+                @click="snackbar = false"
+              >
+                Close
+              </v-btn>
+            </v-snackbar>
             </v-card>
             </v-flex>
           </v-layout>
@@ -82,6 +101,10 @@
         username:'',
         password:'',
         drawer: null,
+        errorMessages: 'Incorrect login info',
+      snackbar: false,
+      color: 'primary',
+      showPassword: false
         
       }
     },
