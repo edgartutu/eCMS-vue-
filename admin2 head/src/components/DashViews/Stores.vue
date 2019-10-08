@@ -71,7 +71,7 @@ import axios from 'axios'
     
     }, 
     created(){
-      axios.get('http://127.0.0.1:5000/AllDeclinedComplaints',{headers:{'x-access-token':this.token}}).then(
+      axios.post('http://127.0.0.1:5000/AllDeclinedComplaintsadmin',{headers:{'x-access-token':this.token}}).then(
         response =>{
           this.items = response.data
         }
