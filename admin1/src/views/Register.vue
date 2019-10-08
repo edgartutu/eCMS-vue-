@@ -20,8 +20,8 @@
                 <div class="flex-grow-4"></div>
                <h2 style="margin-left:30%;" class="purple--text">eCMS</h2>
                 <v-spacer></v-spacer>
-                <v-tooltip right>
-                  <template v-slot:activator="{ on }">
+                <!-- <v-tooltip right> -->
+                  <!-- <template v-slot:activator="{ on }"> -->
                       <router-link to="/login">
                             <v-btn
                             icon
@@ -33,9 +33,9 @@
                             Login
                             </v-btn>
                       </router-link>
-                  </template>
-                  <span class="white--text" >Login Now</span>
-                </v-tooltip>
+                  <!-- </template> -->
+                  <!-- <span class="white--text" >Login Now</span> -->
+                <!-- </v-tooltip> -->
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -136,7 +136,9 @@ import axios from 'axios'
         //console.log('hello')
         axios.post('http://127.0.0.1:5000/register',{
           'Name':this.name,'email':this.email,'post':this.post,'district':this.district,'tel':this.tel,'password':this.password,'confirm_password':this.confirm
-          })
+          }).then(response=>{
+                window.location.reload()
+            })
       }
     }
   }

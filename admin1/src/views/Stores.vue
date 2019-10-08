@@ -71,7 +71,7 @@ import axios from 'axios'
     
     }, 
     created(){
-      axios.get('http://127.0.0.1:5000/AllDeclinedComplaints').then(
+      axios.post('http://127.0.0.1:5000/AllDeclinedComplaints',{"district_n0":localStorage.getItem('district')}).then(
         response =>{
           this.items = response.data
         }
