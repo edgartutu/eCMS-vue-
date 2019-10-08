@@ -44,7 +44,7 @@
                     name="login"
                     v-model="name"
                     prepend-icon="person"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!name || 'This field is required']"
                     type="text"
                   ></v-text-field>
 
@@ -52,7 +52,7 @@
                     label="Email"
                     name="login"
                     v-model="email"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!email || 'This field is required']"
                     prepend-icon="email"
                     type="text"
                   ></v-text-field>
@@ -60,7 +60,7 @@
                     label="Tel"
                     name="login"
                     v-model="tel"
-                     :rules="[() => !!password || 'This field is required']"
+                     :rules="[() => !!tel || 'This field is required']"
                     prepend-icon="email"
                     type="text"
                   ></v-text-field>
@@ -79,7 +79,7 @@
                     v-model="confirm"
                     name="password"
                     prepend-icon="lock"
-                    :rules="[() => !!password || 'This field is required']"
+                    :rules="[() => !!confirm || 'This field is required']"
                     type="password"
                   ></v-text-field>
                 </v-form>
