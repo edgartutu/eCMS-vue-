@@ -16,9 +16,9 @@
                 dark
                 flat
               >
-                <v-toolbar-title class="white--text">Register form</v-toolbar-title>
+                <v-toolbar-title class="white--text">Register </v-toolbar-title>
                 <div class="flex-grow-4"></div>
-               <h2 style="margin-left:30%;" class="purple--text">eCMS</h2>
+               <h2 style="margin-left:30%;color:#faee02;"  >eCMS</h2>
                 <v-spacer></v-spacer>
                 <v-tooltip right>
                   <template v-slot:activator="{ on }">
@@ -86,6 +86,7 @@
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
+                <v-spacer></v-spacer>
                 <v-btn color="primary" @click="submit()">Register</v-btn>
               </v-card-actions>
             </v-card>

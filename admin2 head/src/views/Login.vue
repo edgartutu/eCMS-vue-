@@ -16,7 +16,7 @@
                 dark
                 flat
               >
-                <v-toolbar-title class="white--text">Login form</v-toolbar-title>
+                <v-toolbar-title class="white--text">Login</v-toolbar-title>
                 <div class="flex-grow-1"></div>
                 <v-spacer></v-spacer>
                 <v-tooltip right>
@@ -66,6 +66,7 @@
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
+                <v-spacer></v-spacer>
                 <v-btn color="primary" @click="login">Login</v-btn>
               </v-card-actions>
                <v-snackbar
