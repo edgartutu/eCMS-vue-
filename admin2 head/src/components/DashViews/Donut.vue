@@ -12,6 +12,8 @@
                        v-model="district"
                         label="Districts"
                         :items="items"
+                        style="overflow-y: auto;"
+                        max-height="300px"
                       ></v-autocomplete>
               </v-flex>
               <v-spacer></v-spacer>
