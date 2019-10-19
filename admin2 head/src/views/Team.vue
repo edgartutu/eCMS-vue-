@@ -43,7 +43,8 @@
                 
                 <v-dialog
                 v-model="dialog"
-                width="600"
+                width="800"
+                
                 >
                   <template v-slot:activator="{ on }">
                     <v-btn
@@ -60,29 +61,48 @@
                           primary-title
                           style="color:white;"
                             >
-                            Complaint Details
+                            Complaint Certificate
                           </v-card-title>
                                   <v-card-text class="px-16">
-                                      <h4 class="font-weight-bold">Complaint Ref</h4>
-                                      <p>{{props.item.complaints_refn0}}</p>
-                                      <h4 class="font-weight-bold">Complaint Category</h4>
-                                      <p>{{props.item.nature_complaint}}</p>
+                                     <v-avatar size="100">
+                                      <img
+                                          src="@/assets/img/com.jpg"
+                                          alt="John"
+                                          
+                                      >
+                                      </v-avatar>
+                                       <v-btn class="right teal">Print</v-btn>
+                                      <h3>Orgainsation Name</h3>
+                                      <h3 style="color: #004080;" class="font-weight-bold">Certificate Of Resolution</h3>
+                                      <h4 class="red--text" style="font-weight:bold;">{{props.item.complaints_refn0}}</h4>
+                                      <!-- <h4 class="font-weight-bold">Complaint Ref</h4>
+                                      <p>{{props.item.complaints_refn0}}</p> -->
+                                      <!-- <h4 class="font-weight-bold">Complaint Category</h4>
+                                      <p>{{props.item.nature_complaint}}</p> -->
                                       <h4 class="font-weight-bold">Complainant</h4>
                                       <p>{{props.item.complaint}}</p>
-                                      <h4 class="font-weight-bold">Location</h4>
-                                      <p>{{props.item.district}}</p>
-                                      <h4 class="font-weight-bold">Date Recieved</h4>
-                                      <p>{{props.item.date}}</p>
-                                        <h4 class="font-weight-bold">Date Resolved</h4>
-                                      <p>{{props.item.date_submit}}</p> 
-                                         <h4 class="font-weight-bold">Resolution Details</h4>
+                                      <!-- <h4 class="font-weight-bold">Location</h4>
+                                      <p>{{props.item.district}}</p> -->
+                                      <h4 class="font-weight-bold">District Resolution</h4>
                                       <p>{{props.item.district_resolutions}}</p>
-                                       <h4 class="font-weight-bold">HeadQuater Resolution Details</h4>
+                                       <h4 class="font-weight-bold">HeadQuater Resolution</h4>
                                       <p>{{props.item.headresolution}}</p>
+                                      <div class="left font-weight-bold">Date Recieved :</div>
+                                      <div class="left">{{props.item.date}}</div><br>
+                                        <div class="left font-weight-bold">Date Resolved :</div>
+                                      <div class="left">{{props.item.date_submit}}</div> 
+                                      <div class="right">Signature: ...........................................</div>
+                                      <br>
+                                      <div class="right">Director Technical And Support Services</div><br>
+                                      
+                                     
                                       
                                       
-                                  </v-card-text>     
-                            <v-divider></v-divider>
+                                      
+                                  </v-card-text> 
+                                  
+                                             
+                            <!-- <v-divider></v-divider> -->
                             <v-card-actions>
                               <!-- <v-spacer></v-spacer> -->
                                 <v-dialog

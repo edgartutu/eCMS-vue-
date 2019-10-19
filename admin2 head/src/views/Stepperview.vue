@@ -150,7 +150,31 @@
         <v-container>
           <v-layout>
             <v-flex xs12 md12>
-                    <v-card  class="mb-12"  flat ></v-card>
+                    <v-card  class="mb-12"  flat >
+                       <v-avatar size="100">
+                        <img
+                            src="@/assets/img/com.jpg"
+                            alt="John"
+                            
+                        >
+                        </v-avatar>
+                        <h3>Orgainsation Name</h3>
+                        <h3 style="color: #004080;" class="font-weight-bold">Certificate Of Resolution</h3>
+                        <h4 class="red--text" style="font-weight:bold;">{{userData.refnumber}}</h4>
+                        <h4 class="font-weight-bold">Complaint</h4>
+                        <p>{{userData.complaint_detail}}</p>
+                        <h4 class="font-weight-bold" >HeadQuater Resolution :</h4>
+                        <p>{{userData.resolving}}</p>
+                        <div class="left " >ReportDate:  {{userData.date}}  </div><br>
+                        <div class="left">ResolvedDate: {{userData.dt}}</div>
+                        <div class="right">signature: ...........................................</div>
+                        <br>
+                        <div class="right">Director Technical And Support Services</div>
+                        
+                        <!-- <p class="left"> </p> -->
+
+                        
+                    </v-card>
             </v-flex>
           </v-layout>
         </v-container>
